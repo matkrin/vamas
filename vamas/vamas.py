@@ -26,11 +26,11 @@ def read_vamas(file: str) -> tuple[VamasHeader, List[VamasBlock]]:
         h.operator_identifier = next(f).strip()
         h.experiment_identifier = next(f).strip()
 
-        h.num_lines_comments = int(next(f))
+        h.num_lines_comment = int(next(f))
         comments = []
-        for _ in range(h.num_lines_comments):
+        for _ in range(h.num_lines_comment):
             comments.append(next(f).strip())
-        h.comments = "\n".join(comments)
+        h.comment = "\n".join(comments)
 
         h.experiment_mode = next(f).strip()
         h.scan_mode = next(f).strip()
@@ -100,8 +100,8 @@ def read_vamas(file: str) -> tuple[VamasHeader, List[VamasBlock]]:
             b.minute = int(next(f)) if includes[4] else fb.minute
             b.second = int(next(f)) if includes[5] else fb.second
 
-            b.num_advance_gmt = (
-                int(next(f)) if includes[6] else fb.num_advance_gmt
+            b.num_hours_advance_gmt = (
+                float(next(f)) if includes[6] else fb.num_hours_advance_gmt
             )
 
             if includes[7]:
@@ -160,10 +160,10 @@ def read_vamas(file: str) -> tuple[VamasHeader, List[VamasBlock]]:
                     else fb.sputtering_charge
                 )
 
-            b.analysis_source_char_energy = (
+            b.analysis_source_characteristic_energy = (
                 float(next(f))
                 if includes[13]
-                else fb.analysis_source_char_energy
+                else fb.analysis_source_characteristic_energy
             )
             b.analysis_source_strength = (
                 float(next(f)) if includes[14] else fb.analysis_source_strength
@@ -196,34 +196,26 @@ def read_vamas(file: str) -> tuple[VamasHeader, List[VamasBlock]]:
             # includes 16 or 17 ???
             if h.experiment_mode in ["MAPSV", "MAPSVDP", "SEM"]:
                 b.first_linescan_start_x = (
-                    float(next(f))
-                    if includes[17]
-                    else fb.first_linescan_start_x
+                    int(next(f)) if includes[17] else fb.first_linescan_start_x
                 )
                 b.first_linescan_start_y = (
-                    float(next(f))
-                    if includes[17]
-                    else fb.first_linescan_start_y
+                    int(next(f)) if includes[17] else fb.first_linescan_start_y
                 )
                 b.first_linescan_finish_x = (
-                    float(next(f))
+                    int(next(f))
                     if includes[17]
                     else fb.first_linescan_finish_x
                 )
                 b.first_linescan_finish_y = (
-                    float(next(f))
+                    int(next(f))
                     if includes[17]
                     else fb.first_linescan_finish_y
                 )
-                b.last_linescan_start_x = (
-                    float(next(f))
-                    if includes[17]
-                    else fb.last_linescan_start_x
+                b.last_linescan_finish_x = (
+                    int(next(f)) if includes[17] else fb.last_linescan_finish_x
                 )
-                b.last_linescan_start_y = (
-                    float(next(f))
-                    if includes[17]
-                    else fb.last_linescan_start_y
+                b.last_linescan_finish_y = (
+                    int(next(f)) if includes[17] else fb.last_linescan_finish_y
                 )
 
             b.analysis_source_polar_incidence_angle = (
@@ -238,15 +230,15 @@ def read_vamas(file: str) -> tuple[VamasHeader, List[VamasBlock]]:
                 next(f).strip() if includes[20] else fb.analyzer_mode
             )
 
-            b.analyzer_pass_energy_retard_ratio_mass_res = (
+            b.analyzer_pass_energy_or_retard_ratio_or_mass_res = (
                 float(next(f))
                 if includes[21]
-                else fb.analyzer_pass_energy_retard_ratio_mass_res
+                else fb.analyzer_pass_energy_or_retard_ratio_or_mass_res
             )
 
             if b.technique == "AES diff":
                 b.differential_width = (
-                    next(f) if includes[22] else fb.differential_width
+                    float(next(f)) if includes[22] else fb.differential_width
                 )
 
             b.magnification_analyzer_transfer_lens = (
@@ -290,7 +282,7 @@ def read_vamas(file: str) -> tuple[VamasHeader, List[VamasBlock]]:
                 else fb.transition_or_charge_state_label
             )
             b.charge_detected_particle = (
-                float(next(f)) if includes[29] else fb.charge_detected_particle
+                int(next(f)) if includes[29] else fb.charge_detected_particle
             )
 
             if h.scan_mode != "REGULAR":
@@ -418,7 +410,7 @@ def read_vamas(file: str) -> tuple[VamasHeader, List[VamasBlock]]:
                 int(b.num_y_values / len(b.corresponding_variables))
             ):
                 for corres_var in b.corresponding_variables:
-                    corres_var.array.append(float(next(f)))
+                    corres_var.y_values.append(float(next(f)))
 
             blocks.append(b)
             fb = blocks[0]

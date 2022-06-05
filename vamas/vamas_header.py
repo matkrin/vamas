@@ -21,8 +21,8 @@ class VamasHeader:
     instrument_model_identifier: Optional[str] = None
     operator_identifier: Optional[str] = None
     experiment_identifier: Optional[str] = None
-    num_lines_comments: Optional[int] = None
-    comments: Optional[str] = None
+    num_lines_comment: Optional[int] = None
+    comment: Optional[str] = None
     experiment_mode: Optional[str] = None
     scan_mode: Optional[str] = None
     num_spectral_regions: Optional[int] = None

@@ -7,7 +7,7 @@ import numpy as np
 class CorrespondingVariable:
     label: str
     unit: str
-    array: List[float]
+    y_values: List[float]
     y_min: Optional[float] = None
     y_max: Optional[float] = None
 
@@ -30,7 +30,7 @@ class VamasBlock:
     hour: Optional[int] = None
     minute: Optional[int] = None
     second: Optional[int] = None
-    num_advance_gmt: Optional[int] = None
+    num_hours_advance_gmt: Optional[float] = None
 
     num_block_comments: Optional[int] = None
     block_comment: Optional[str] = None
@@ -48,7 +48,7 @@ class VamasBlock:
     sputtering_num_particles: Optional[float] = None
     sputtering_charge: Optional[float] = None
 
-    analysis_source_char_energy: Optional[float] = None
+    analysis_source_characteristic_energy: Optional[float] = None
     analysis_source_strength: Optional[float] = None
     analysis_source_beam_width_x: Optional[float] = None
     analysis_source_beam_width_y: Optional[float] = None
@@ -56,19 +56,19 @@ class VamasBlock:
     field_view_x: Optional[float] = None
     field_view_y: Optional[float] = None
 
-    first_linescan_start_x: Optional[float] = None
-    first_linescan_start_y: Optional[float] = None
-    first_linescan_finish_x: Optional[float] = None
-    first_linescan_finish_y: Optional[float] = None
-    last_linescan_start_x: Optional[float] = None
-    last_linescan_start_y: Optional[float] = None
+    first_linescan_start_x: Optional[int] = None
+    first_linescan_start_y: Optional[int] = None
+    first_linescan_finish_x: Optional[int] = None
+    first_linescan_finish_y: Optional[int] = None
+    last_linescan_finish_x: Optional[int] = None
+    last_linescan_finish_y: Optional[int] = None
 
     analysis_source_polar_incidence_angle: Optional[float] = None
     analysis_source_azimuth: Optional[float] = None
     analyzer_mode: Optional[str] = None
 
-    analyzer_pass_energy_retard_ratio_mass_res: Optional[float] = None
-    differential_width: Optional[str] = None
+    analyzer_pass_energy_or_retard_ratio_or_mass_res: Optional[float] = None
+    differential_width: Optional[float] = None
 
     magnification_analyzer_transfer_lens: Optional[float] = None
     analyzer_work_function_or_acceptance_energy: Optional[float] = None
@@ -83,7 +83,7 @@ class VamasBlock:
     species_label: Optional[str] = None
     transition_or_charge_state_label: Optional[str] = None
 
-    charge_detected_particle: Optional[float] = None
+    charge_detected_particle: Optional[int] = None
 
     x_label: Optional[str] = None
     x_units: Optional[str] = None
@@ -115,28 +115,3 @@ class VamasBlock:
     ] = None
 
     num_y_values: Optional[int] = None
-
-    @property
-    def data_points(self):
-        if (
-            self.x_start
-            and self.x_step
-            and self.num_y_values
-            and self.corresponding_variables
-        ):
-            start = self.x_start
-            print(start)
-            step = self.x_step
-            print(step)
-            end = start + self.num_y_values * step
-            print(end)
-            if step < 0:
-                start, end = end, start
-                step = -step
-            return np.column_stack(
-                (
-                    np.arange(start, end, step),
-                    np.asarray(self.corresponding_variables[0]["array"]),
-                )
-            )
-        return
