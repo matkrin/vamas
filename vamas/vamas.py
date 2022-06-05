@@ -1,11 +1,19 @@
 from typing import List
 
-from .vamas_header import VamasHeader
-from .vamas_block import VamasBlock
+from .vamas_header import (
+    VamasHeader,
+    ExperimentVariable,
+    FutureUpgradeExperimentEntry,
+)
+from .vamas_block import (
+    VamasBlock,
+    CorrespondingVariable,
+    AdditionalNumericalParam,
+)
 
 
 class Vamas:
-    def __init__(self, file: str):
+    def __init__(self, file: str) -> None:
         self.header, self.blocks = read_vamas(file)
 
 
@@ -27,10 +35,10 @@ def read_vamas(file: str) -> tuple[VamasHeader, List[VamasBlock]]:
         h.experiment_mode = next(f).strip()
         h.scan_mode = next(f).strip()
 
-        if any(x in h.experiment_mode for x in ["MAP", "MAPD", "NORM", "SDP"]):
+        if h.experiment_mode in ["MAP", "MAPD", "NORM", "SDP"]:
             h.num_spectral_regions = int(next(f).strip())
 
-        if any(x in h.experiment_mode for x in ["MAP", "MAPD"]):
+        if h.experiment_mode in ["MAP", "MAPD"]:
             h.num_analysis_positions = int(next(f))
             h.num_discrete_x_coords_in_full_map = int(next(f))
             h.num_discrete_y_coords_in_full_map = int(next(f))
@@ -39,7 +47,8 @@ def read_vamas(file: str) -> tuple[VamasHeader, List[VamasBlock]]:
         h.experiment_variables = []
         for _ in range(h.num_experiment_variables):
             h.experiment_variables.append(
-                {"label": next(f).strip(), "unit": next(f).strip()}
+                # {"label": next(f).strip(), "unit": next(f).strip()}
+                ExperimentVariable(next(f).strip(), next(f).strip())
             )
 
         h.num_entries_inclusion_exclusion = int(next(f))
@@ -57,7 +66,8 @@ def read_vamas(file: str) -> tuple[VamasHeader, List[VamasBlock]]:
         h.future_upgrade_experiment_entries = []
         for _ in range(h.num_future_upgrade_experiment_entries):
             h.future_upgrade_experiment_entries.append(
-                {"label": next(f).strip(), "unit": next(f).strip()}
+                # {"label": next(f).strip(), "unit": next(f).strip()}
+                FutureUpgradeExperimentEntry(next(f).strip(), next(f).strip())
             )
 
         if h.num_future_upgrade_experiment_entries != 0:
@@ -107,7 +117,7 @@ def read_vamas(file: str) -> tuple[VamasHeader, List[VamasBlock]]:
 
             b.technique = next(f).strip() if includes[8] else fb.technique
 
-            if any(x in h.experiment_mode for x in ["MAP", "MAPD"]):
+            if h.experiment_mode in ["MAP", "MAPD"]:
                 b.x_coord = int(next(f)) if includes[9] else fb.x_coord
                 b.y_coord = int(next(f)) if includes[9] else fb.y_coord
 
@@ -122,21 +132,20 @@ def read_vamas(file: str) -> tuple[VamasHeader, List[VamasBlock]]:
                 next(f).strip() if includes[11] else fb.analysis_source_label
             )
 
-            if any(
-                x in h.experiment_mode
-                for x in ["MAPDP", "MAPSVDP", "SDP", "SDPSV"]
-            ) or any(
-                x in b.technique
-                for x in [
-                    "SNMS energy spec",
-                    "FABMS",
-                    "FABMS energy spec",
-                    "ISS",
-                    "SIMS",
-                    "SIMS energy spec",
-                    "SNMS",
-                ]
-            ):
+            if h.experiment_mode in [
+                "MAPDP",
+                "MAPSVDP",
+                "SDP",
+                "SDPSV",
+            ] or b.technique in [
+                "SNMS energy spec",
+                "FABMS",
+                "FABMS energy spec",
+                "ISS",
+                "SIMS",
+                "SIMS energy spec",
+                "SNMS",
+            ]:
                 b.sputtering_z = (
                     int(next(f)) if includes[12] else fb.sputtering_z
                 )
@@ -170,10 +179,13 @@ def read_vamas(file: str) -> tuple[VamasHeader, List[VamasBlock]]:
                 else fb.analysis_source_beam_width_y
             )
 
-            if any(
-                x in h.experiment_mode
-                for x in ["MAP", "MAPDP", "MAPSV", "MAPSVDP", "SEM"]
-            ):
+            if h.experiment_mode in [
+                "MAP",
+                "MAPDP",
+                "MAPSV",
+                "MAPSVDP",
+                "SEM",
+            ]:
                 b.field_view_x = (
                     float(next(f)) if includes[16] else fb.field_view_x
                 )
@@ -182,9 +194,7 @@ def read_vamas(file: str) -> tuple[VamasHeader, List[VamasBlock]]:
                 )
 
             # includes 16 or 17 ???
-            if any(
-                x in h.experiment_mode for x in ["MAPSV", "MAPSVDP", "SEM"]
-            ):
+            if h.experiment_mode in ["MAPSV", "MAPSVDP", "SEM"]:
                 b.first_linescan_start_x = (
                     float(next(f))
                     if includes[17]
@@ -298,11 +308,9 @@ def read_vamas(file: str) -> tuple[VamasHeader, List[VamasBlock]]:
                 b.corresponding_variables = []
                 for _ in range(b.num_corresponding_variables):
                     b.corresponding_variables.append(
-                        {
-                            "label": next(f).strip(),
-                            "unit": next(f).strip(),
-                            "array": [],
-                        }
+                        CorrespondingVariable(
+                            next(f).strip(), next(f).strip(), []
+                        )
                     )
 
             else:
@@ -323,13 +331,19 @@ def read_vamas(file: str) -> tuple[VamasHeader, List[VamasBlock]]:
                 float(next(f)) if includes[35] else fb.signal_time_correction
             )
 
-            if any(
-                x in h.experiment_mode
-                for x in ["MAPDP", "MAPSVDP", "SDP", "SDPSV"]
-            ) and any(
-                x in b.technique
-                for x in ["AES diff", "AES dir", "EDX", "ELS", "UPS", "XRF"]
-            ):
+            if h.experiment_mode in [
+                "MAPDP",
+                "MAPSVDP",
+                "SDP",
+                "SDPSV",
+            ] and b.technique in [
+                "AES diff",
+                "AES dir",
+                "EDX",
+                "ELS",
+                "UPS",
+                "XRF",
+            ]:
                 b.sputtering_source_energy = (
                     float(next(f))
                     if includes[36]
@@ -385,11 +399,9 @@ def read_vamas(file: str) -> tuple[VamasHeader, List[VamasBlock]]:
                 b.additional_numerical_params = []
                 for _ in range(b.num_additional_numerical_params):
                     b.additional_numerical_params.append(
-                        {
-                            "label": next(f).strip(),
-                            "unit": next(f).strip(),
-                            "value": next(f),
-                        }
+                        AdditionalNumericalParam(
+                            next(f).strip(), next(f).strip(), float(next(f))
+                        )
                     )
             else:
                 b.num_additional_numerical_params = (
@@ -399,14 +411,14 @@ def read_vamas(file: str) -> tuple[VamasHeader, List[VamasBlock]]:
 
             b.num_y_values = int(next(f))
             for corres_var in b.corresponding_variables:
-                corres_var["y_min"] = float(next(f))
-                corres_var["y_max"] = float(next(f))
+                corres_var.y_min = float(next(f))
+                corres_var.y_max = float(next(f))
 
             for _ in range(
                 int(b.num_y_values / len(b.corresponding_variables))
             ):
                 for corres_var in b.corresponding_variables:
-                    corres_var["array"].append(float(next(f)))
+                    corres_var.array.append(float(next(f)))
 
             blocks.append(b)
             fb = blocks[0]

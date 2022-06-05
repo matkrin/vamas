@@ -4,6 +4,22 @@ import numpy as np
 
 
 @dataclass
+class CorrespondingVariable:
+    label: str
+    unit: str
+    array: List[float]
+    y_min: Optional[float] = None
+    y_max: Optional[float] = None
+
+
+@dataclass
+class AdditionalNumericalParam:
+    label: str
+    unit: str
+    values: float
+
+
+@dataclass
 class VamasBlock:
     block_identifier: Optional[str] = None
     sample_identifier: Optional[str] = None
@@ -74,7 +90,7 @@ class VamasBlock:
     x_start: Optional[float] = None
     x_step: Optional[float] = None
     num_corresponding_variables: Optional[int] = None
-    corresponding_variables: Optional[List[dict]] = None
+    corresponding_variables: Optional[List[CorrespondingVariable]] = None
 
     signal_mode: Optional[str] = None
     signal_collection_time: Optional[float] = None
@@ -94,7 +110,9 @@ class VamasBlock:
     sample_rotation_angle: Optional[float] = None
 
     num_additional_numerical_params: Optional[int] = None
-    additional_numerical_params: Optional[List[dict]] = None
+    additional_numerical_params: Optional[
+        List[AdditionalNumericalParam]
+    ] = None
 
     num_y_values: Optional[int] = None
 

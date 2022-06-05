@@ -3,6 +3,18 @@ from typing import Optional, List
 
 
 @dataclass
+class ExperimentVariable:
+    label: str
+    unit: str
+
+
+@dataclass
+class FutureUpgradeExperimentEntry:
+    label: str
+    unit: str
+
+
+@dataclass
 class VamasHeader:
     format_identifier: Optional[str] = None
     institution_identifier: Optional[str] = None
@@ -18,11 +30,13 @@ class VamasHeader:
     num_discrete_x_coords_in_full_map: Optional[int] = None
     num_discrete_y_coords_in_full_map: Optional[int] = None
     num_experiment_variables: Optional[int] = None
-    experiment_variables: Optional[List[dict[str, str]]] = None
+    experiment_variables: Optional[List[ExperimentVariable]] = None
     num_entries_inclusion_exclusion: Optional[int] = None
     block_params_includes: Optional[List[bool]] = None
     num_manually_entered_items_in_block: Optional[int] = None
     num_future_upgrade_experiment_entries: Optional[int] = None
-    future_upgrade_experiment_entries: Optional[List[dict[str, str]]] = None
+    future_upgrade_experiment_entries: Optional[
+        List[FutureUpgradeExperimentEntry]
+    ] = None
     num_future_upgrade_block_entries: Optional[int] = None
     num_blocks: Optional[int] = None
