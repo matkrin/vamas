@@ -1,6 +1,26 @@
 from dataclasses import dataclass
 from typing import Optional, List
-import numpy as np
+
+
+@dataclass
+class LinescanCoordinates:
+    first_linescan_start_x: int
+    first_linescan_start_y: int
+    first_linescan_finish_x: int
+    first_linescan_finish_y: int
+    last_linescan_finish_x: int
+    last_linescan_finish_y: int
+
+
+@dataclass
+class SputteringSource:
+    energy: float
+    beam_current: float
+    width_x: float
+    width_y: float
+    polar_incidence_angle: float
+    azimuth: float
+    mode: str
 
 
 @dataclass
@@ -32,7 +52,7 @@ class VamasBlock:
     second: Optional[int] = None
     num_hours_advance_gmt: Optional[float] = None
 
-    num_block_comments: Optional[int] = None
+    num_lines_block_comment: Optional[int] = None
     block_comment: Optional[str] = None
 
     technique: Optional[str] = None
@@ -56,12 +76,7 @@ class VamasBlock:
     field_view_x: Optional[float] = None
     field_view_y: Optional[float] = None
 
-    first_linescan_start_x: Optional[int] = None
-    first_linescan_start_y: Optional[int] = None
-    first_linescan_finish_x: Optional[int] = None
-    first_linescan_finish_y: Optional[int] = None
-    last_linescan_finish_x: Optional[int] = None
-    last_linescan_finish_y: Optional[int] = None
+    linescan_coordinates: Optional[LinescanCoordinates] = None
 
     analysis_source_polar_incidence_angle: Optional[float] = None
     analysis_source_azimuth: Optional[float] = None
@@ -89,6 +104,7 @@ class VamasBlock:
     x_units: Optional[str] = None
     x_start: Optional[float] = None
     x_step: Optional[float] = None
+
     num_corresponding_variables: Optional[int] = None
     corresponding_variables: Optional[List[CorrespondingVariable]] = None
 
@@ -97,13 +113,7 @@ class VamasBlock:
     num_scans_to_compile_block: Optional[int] = None
     signal_time_correction: Optional[float] = None
 
-    sputtering_source_energy: Optional[float] = None
-    sputtering_source_beam_current: Optional[float] = None
-    sputtering_source_width_x: Optional[float] = None
-    sputtering_source_width_y: Optional[float] = None
-    sputtering_source_polar_angle_incidence: Optional[float] = None
-    sputtering_source_azimuth: Optional[float] = None
-    sputtering_mode: Optional[str] = None
+    sputtering_source: Optional[SputteringSource] = None
 
     sample_normal_polar_angle_tilt: Optional[float] = None
     sample_normal_tilt_azimuth: Optional[float] = None

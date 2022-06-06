@@ -7,6 +7,8 @@ from .vamas_header import (
 )
 from .vamas_block import (
     VamasBlock,
+    SputteringSource,
+    LinescanCoordinates,
     CorrespondingVariable,
     AdditionalNumericalParam,
 )
@@ -21,6 +23,12 @@ def read_vamas(file: str) -> tuple[VamasHeader, List[VamasBlock]]:
     with open(file) as f:
         h = VamasHeader()
         h.format_identifier = next(f).strip()
+        if (
+            h.format_identifier
+            != "VAMAS Surface Chemical Analysis Standard Data Transfer Format"
+            " 1988 May 4"
+        ):
+            pass
         h.institution_identifier = next(f).strip()
         h.instrument_model_identifier = next(f).strip()
         h.operator_identifier = next(f).strip()
@@ -82,7 +90,7 @@ def read_vamas(file: str) -> tuple[VamasHeader, List[VamasBlock]]:
         # End of header
         blocks = []
         for _ in range(h.num_blocks):
-            includes = (
+            include = (
                 [True for _ in range(40)]
                 if len(blocks) == 0
                 else h.block_params_includes
@@ -93,35 +101,35 @@ def read_vamas(file: str) -> tuple[VamasHeader, List[VamasBlock]]:
             b.block_identifier = next(f).strip()
             b.sample_identifier = next(f).strip()
 
-            b.year = int(next(f)) if includes[0] else fb.year
-            b.month = int(next(f)) if includes[1] else fb.month
-            b.day = int(next(f)) if includes[2] else fb.day
-            b.hour = int(next(f)) if includes[3] else fb.hour
-            b.minute = int(next(f)) if includes[4] else fb.minute
-            b.second = int(next(f)) if includes[5] else fb.second
+            b.year = int(next(f)) if include[0] else fb.year
+            b.month = int(next(f)) if include[1] else fb.month
+            b.day = int(next(f)) if include[2] else fb.day
+            b.hour = int(next(f)) if include[3] else fb.hour
+            b.minute = int(next(f)) if include[4] else fb.minute
+            b.second = int(next(f)) if include[5] else fb.second
 
             b.num_hours_advance_gmt = (
-                float(next(f)) if includes[6] else fb.num_hours_advance_gmt
+                float(next(f)) if include[6] else fb.num_hours_advance_gmt
             )
 
-            if includes[7]:
-                b.num_block_comments = int(next(f))
+            if include[7]:
+                b.num_lines_block_comment = int(next(f))
                 block_comments = []
-                for _ in range(b.num_block_comments):
+                for _ in range(b.num_lines_block_comment):
                     block_comments.append(next(f).strip())
 
                 b.block_comment = "\n".join(block_comments)
             else:
-                b.num_block_comments = fb.num_block_comments
+                b.num_lines_block_comment = fb.num_lines_block_comment
                 b.block_comment = fb.block_comment
 
-            b.technique = next(f).strip() if includes[8] else fb.technique
+            b.technique = next(f).strip() if include[8] else fb.technique
 
             if h.experiment_mode in ["MAP", "MAPD"]:
-                b.x_coord = int(next(f)) if includes[9] else fb.x_coord
-                b.y_coord = int(next(f)) if includes[9] else fb.y_coord
+                b.x_coord = int(next(f)) if include[9] else fb.x_coord
+                b.y_coord = int(next(f)) if include[9] else fb.y_coord
 
-            if includes[10]:
+            if include[10]:
                 b.values_exp_var = []
                 for _ in range(len(h.experiment_variables)):
                     b.values_exp_var.append(next(f))
@@ -129,7 +137,7 @@ def read_vamas(file: str) -> tuple[VamasHeader, List[VamasBlock]]:
                 b.values_exp_var = fb.values_exp_var
 
             b.analysis_source_label = (
-                next(f).strip() if includes[11] else fb.analysis_source_label
+                next(f).strip() if include[11] else fb.analysis_source_label
             )
 
             if h.experiment_mode in [
@@ -147,35 +155,35 @@ def read_vamas(file: str) -> tuple[VamasHeader, List[VamasBlock]]:
                 "SNMS",
             ]:
                 b.sputtering_z = (
-                    int(next(f)) if includes[12] else fb.sputtering_z
+                    int(next(f)) if include[12] else fb.sputtering_z
                 )
                 b.sputtering_num_particles = (
                     float(next(f))
-                    if includes[12]
+                    if include[12]
                     else fb.sputtering_num_particles
                 )
                 b.sputtering_charge = (
                     float(next(f).strip())
-                    if includes[12]
+                    if include[12]
                     else fb.sputtering_charge
                 )
 
             b.analysis_source_characteristic_energy = (
                 float(next(f))
-                if includes[13]
+                if include[13]
                 else fb.analysis_source_characteristic_energy
             )
             b.analysis_source_strength = (
-                float(next(f)) if includes[14] else fb.analysis_source_strength
+                float(next(f)) if include[14] else fb.analysis_source_strength
             )
             b.analysis_source_beam_width_x = (
                 float(next(f))
-                if includes[15]
+                if include[15]
                 else fb.analysis_source_beam_width_x
             )
             b.analysis_source_beam_width_y = (
                 float(next(f))
-                if includes[15]
+                if include[15]
                 else fb.analysis_source_beam_width_y
             )
 
@@ -187,121 +195,111 @@ def read_vamas(file: str) -> tuple[VamasHeader, List[VamasBlock]]:
                 "SEM",
             ]:
                 b.field_view_x = (
-                    float(next(f)) if includes[16] else fb.field_view_x
+                    float(next(f)) if include[16] else fb.field_view_x
                 )
                 b.field_view_y = (
-                    float(next(f)) if includes[16] else fb.field_view_y
+                    float(next(f)) if include[16] else fb.field_view_y
                 )
 
-            # includes 16 or 17 ???
             if h.experiment_mode in ["MAPSV", "MAPSVDP", "SEM"]:
-                b.first_linescan_start_x = (
-                    int(next(f)) if includes[17] else fb.first_linescan_start_x
-                )
-                b.first_linescan_start_y = (
-                    int(next(f)) if includes[17] else fb.first_linescan_start_y
-                )
-                b.first_linescan_finish_x = (
-                    int(next(f))
-                    if includes[17]
-                    else fb.first_linescan_finish_x
-                )
-                b.first_linescan_finish_y = (
-                    int(next(f))
-                    if includes[17]
-                    else fb.first_linescan_finish_y
-                )
-                b.last_linescan_finish_x = (
-                    int(next(f)) if includes[17] else fb.last_linescan_finish_x
-                )
-                b.last_linescan_finish_y = (
-                    int(next(f)) if includes[17] else fb.last_linescan_finish_y
-                )
+                if include[17]:
+                    b.linescan_coordinates = LinescanCoordinates(
+                        first_linescan_start_x=int(next(f)),
+                        first_linescan_start_y=int(next(f)),
+                        first_linescan_finish_x=int(next(f)),
+                        first_linescan_finish_y=int(next(f)),
+                        last_linescan_finish_x=int(next(f)),
+                        last_linescan_finish_y=int(next(f)),
+                    )
+                else:
+                    b.linescan_coordinates = fb.linescan_coordinates
 
             b.analysis_source_polar_incidence_angle = (
                 float(next(f))
-                if includes[18]
+                if include[18]
                 else fb.analysis_source_polar_incidence_angle
             )
             b.analysis_source_azimuth = (
-                float(next(f)) if includes[19] else fb.analysis_source_azimuth
+                float(next(f)) if include[19] else fb.analysis_source_azimuth
             )
             b.analyzer_mode = (
-                next(f).strip() if includes[20] else fb.analyzer_mode
+                next(f).strip() if include[20] else fb.analyzer_mode
             )
 
             b.analyzer_pass_energy_or_retard_ratio_or_mass_res = (
                 float(next(f))
-                if includes[21]
+                if include[21]
                 else fb.analyzer_pass_energy_or_retard_ratio_or_mass_res
             )
 
             if b.technique == "AES diff":
                 b.differential_width = (
-                    float(next(f)) if includes[22] else fb.differential_width
+                    float(next(f)) if include[22] else fb.differential_width
                 )
 
             b.magnification_analyzer_transfer_lens = (
                 float(next(f))
-                if includes[23]
+                if include[23]
                 else fb.magnification_analyzer_transfer_lens
             )
             b.analyzer_work_function_or_acceptance_energy = (
                 float(next(f))
-                if includes[24]
+                if include[24]
                 else fb.analyzer_work_function_or_acceptance_energy
             )
 
-            b.target_bias = float(next(f)) if includes[25] else fb.target_bias
+            b.target_bias = float(next(f)) if include[25] else fb.target_bias
 
             b.analysis_width_x = (
-                float(next(f)) if includes[26] else fb.analysis_width_x
+                float(next(f)) if include[26] else fb.analysis_width_x
             )
             b.analysis_width_y = (
-                float(next(f)) if includes[26] else fb.analysis_width_y
+                float(next(f)) if include[26] else fb.analysis_width_y
             )
 
             b.analyzer_axis_take_off_polar_angle = (
                 float(next(f))
-                if includes[27]
+                if include[27]
                 else fb.analyzer_axis_take_off_polar_angle
             )
             b.analyzer_axis_take_off_azimuth = (
                 float(next(f))
-                if includes[27]
+                if include[27]
                 else fb.analyzer_axis_take_off_azimuth
             )
 
             b.species_label = (
-                next(f).strip() if includes[28] else fb.species_label
+                next(f).strip() if include[28] else fb.species_label
             )
 
             b.transition_or_charge_state_label = (
                 next(f).strip()
-                if includes[29]
+                if include[29]
                 else fb.transition_or_charge_state_label
             )
             b.charge_detected_particle = (
-                int(next(f)) if includes[29] else fb.charge_detected_particle
+                int(next(f)) if include[29] else fb.charge_detected_particle
             )
 
             if h.scan_mode != "REGULAR":
                 print("Only REGULAR scans supported")
 
-            b.x_label = next(f).strip() if includes[30] else fb.x_label
-            b.x_units = next(f).strip() if includes[30] else fb.x_units
+            b.x_label = next(f).strip() if include[30] else fb.x_label
+            b.x_units = next(f).strip() if include[30] else fb.x_units
 
             # 30 or 31
-            b.x_start = float(next(f)) if includes[31] else fb.x_start
-            b.x_step = float(next(f)) if includes[31] else fb.x_step
+            b.x_start = float(next(f)) if include[30] else fb.x_start
+            b.x_step = float(next(f)) if include[30] else fb.x_step
 
-            if includes[31]:
+            if include[31]:
                 b.num_corresponding_variables = int(next(f))
                 b.corresponding_variables = []
                 for _ in range(b.num_corresponding_variables):
                     b.corresponding_variables.append(
                         CorrespondingVariable(
-                            next(f).strip(), next(f).strip(), []
+                            label=next(f).strip(),
+                            unit=next(f).strip(),
+                            y_values=[],
                         )
                     )
 
@@ -309,18 +307,18 @@ def read_vamas(file: str) -> tuple[VamasHeader, List[VamasBlock]]:
                 b.num_corresponding_variables = fb.num_corresponding_variables
                 b.corresponding_variables = fb.corresponding_variables.copy()
 
-            b.signal_mode = next(f).strip() if includes[32] else fb.signal_mode
+            b.signal_mode = next(f).strip() if include[32] else fb.signal_mode
 
             b.signal_collection_time = (
-                float(next(f)) if includes[33] else fb.signal_collection_time
+                float(next(f)) if include[33] else fb.signal_collection_time
             )
 
             b.num_scans_to_compile_block = (
-                int(next(f)) if includes[34] else fb.num_scans_to_compile_block
+                int(next(f)) if include[34] else fb.num_scans_to_compile_block
             )
 
             b.signal_time_correction = (
-                float(next(f)) if includes[35] else fb.signal_time_correction
+                float(next(f)) if include[35] else fb.signal_time_correction
             )
 
             if h.experiment_mode in [
@@ -336,63 +334,44 @@ def read_vamas(file: str) -> tuple[VamasHeader, List[VamasBlock]]:
                 "UPS",
                 "XRF",
             ]:
-                b.sputtering_source_energy = (
-                    float(next(f))
-                    if includes[36]
-                    else fb.sputtering_source_energy
-                )
-                b.sputtering_source_beam_current = (
-                    float(next(f))
-                    if includes[36]
-                    else fb.sputtering_source_beam_current
-                )
-                b.sputtering_source_width_x = (
-                    float(next(f))
-                    if includes[36]
-                    else fb.sputtering_source_width_x
-                )
-                b.sputtering_source_width_y = (
-                    float(next(f))
-                    if includes[36]
-                    else fb.sputtering_source_width_y
-                )
-                b.sputtering_source_polar_angle_incidence = (
-                    float(next(f))
-                    if includes[36]
-                    else fb.sputtering_source_polar_angle_incidence
-                )
-                b.sputtering_source_azimuth = (
-                    float(next(f))
-                    if includes[36]
-                    else fb.sputtering_source_azimuth
-                )
-                b.sputtering_mode = (
-                    next(f).strip() if includes[36] else fb.sputtering_mode
-                )
+                if include[36]:
+                    b.sputtering_source = SputteringSource(
+                        energy=float(next(f)),
+                        beam_current=float(next(f)),
+                        width_x=float(next(f)),
+                        width_y=float(next(f)),
+                        polar_incidence_angle=float(next(f)),
+                        azimuth=float(next(f)),
+                        mode=next(f).strip(),
+                    )
+                else:
+                    b.sputtering_source = fb.sputtering_source
 
             b.sample_normal_polar_angle_tilt = (
                 float(next(f))
-                if includes[37]
+                if include[37]
                 else fb.sample_normal_polar_angle_tilt
             )
 
             b.sample_normal_tilt_azimuth = (
                 float(next(f))
-                if includes[37]
+                if include[37]
                 else fb.sample_normal_tilt_azimuth
             )
 
             b.sample_rotation_angle = (
-                float(next(f)) if includes[38] else fb.sample_rotation_angle
+                float(next(f)) if include[38] else fb.sample_rotation_angle
             )
 
-            if includes[39]:
+            if include[39]:
                 b.num_additional_numerical_params = int(next(f))
                 b.additional_numerical_params = []
                 for _ in range(b.num_additional_numerical_params):
                     b.additional_numerical_params.append(
                         AdditionalNumericalParam(
-                            next(f).strip(), next(f).strip(), float(next(f))
+                            label=next(f).strip(),
+                            unit=next(f).strip(),
+                            values=float(next(f)),
                         )
                     )
             else:
