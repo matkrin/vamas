@@ -1,4 +1,5 @@
-from typing import List, TextIO
+from typing import Union, List, TextIO
+from pathlib import Path
 
 from .vamas_header import (
     VamasHeader,
@@ -15,7 +16,7 @@ from .vamas_block import (
 
 
 class Vamas:
-    def __init__(self, file: str) -> None:
+    def __init__(self, file: Union[str, Path]) -> None:
         with open(file) as f:
             self.header, self.blocks = read_vamas(f)
 
@@ -88,7 +89,7 @@ def read_vamas(f: TextIO) -> tuple[VamasHeader, List[VamasBlock]]:
     h.num_blocks = int(next(f))
 
     # End of header
-    blocks = []
+    blocks: List[VamasBlock] = []
     for _ in range(h.num_blocks):
         include = (
             [True for _ in range(40)]
@@ -287,6 +288,7 @@ def read_vamas(f: TextIO) -> tuple[VamasHeader, List[VamasBlock]]:
 
         else:
             b.num_corresponding_variables = fb.num_corresponding_variables
+            assert fb.corresponding_variables is not None
             b.corresponding_variables = fb.corresponding_variables.copy()
 
         b.signal_mode = next(f).strip() if include[32] else fb.signal_mode
@@ -351,7 +353,7 @@ def read_vamas(f: TextIO) -> tuple[VamasHeader, List[VamasBlock]]:
                     AdditionalNumericalParam(
                         label=next(f).strip(),
                         unit=next(f).strip(),
-                        values=float(next(f)),
+                        value=float(next(f)),
                     )
                 )
         else:

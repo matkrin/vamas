@@ -36,7 +36,7 @@ class CorrespondingVariable:
 class AdditionalNumericalParam:
     label: str
     unit: str
-    values: float
+    value: float
 
 
 @dataclass
@@ -80,6 +80,7 @@ class VamasBlock:
 
     analysis_source_polar_incidence_angle: Optional[float] = None
     analysis_source_azimuth: Optional[float] = None
+
     analyzer_mode: Optional[str] = None
 
     analyzer_pass_energy_or_retard_ratio_or_mass_res: Optional[float] = None
