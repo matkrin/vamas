@@ -14,6 +14,7 @@ class LinescanCoordinates:
     left-hand side of the frame and increase towards the right-hand side,
     and y-values start at unity at the top of the frame and increase towards
     the bottom of the frame, as shown below.
+    (18)
 
     +----------------+
     | 1, 1      N, 1 |
@@ -31,6 +32,7 @@ class LinescanCoordinates:
         last_linescan_finish_x (int):
         last_linescan_finish_y (int):
     """
+
     first_linescan_start_x: int
     first_linescan_start_y: int
     first_linescan_finish_x: int
@@ -62,12 +64,13 @@ class SputteringSource:
             defined by the sample stage
         azimuth (float): degrees clockwise from the y-direction towards the
             operator, defined by the sample stage
-        mode (str): 
+        mode (str):
             The value of sputtering mode is either 'continuous', when
             sputtering continues while spectral data is being recorded, or
             'cyclic', when sputtering is suspended while spectral data is being
             recorded.
     """
+
     energy: float
     beam_current: float
     width_x: float
@@ -80,9 +83,10 @@ class SputteringSource:
 @dataclass
 class CorrespondingVariable:
     """
-    The number of Occurrences of the above pair of entries is specified by the value of number of
-    corresponding variables above. The order in which the pairs of entries appear is the same as the order in
-    which the corresponding values of corresponding variable label are given above
+    The number of occurrences of CorrespondingVariable is specified by
+    the value of number of corresponding variables. The order in which
+    the pairs of entries appear is the same as the order in which the
+    corresponding values of corresponding variable label are given.
 
     Attributes:
         label (str):
@@ -108,6 +112,7 @@ class CorrespondingVariable:
             entries appear is the same as the order in which the *corresponding
             values of *corresponding variable label* are given.
     """
+
     label: str
     unit: str
     y_values: List[float]
@@ -119,14 +124,15 @@ class CorrespondingVariable:
 class AdditionalNumericalParam:
     """
 
-    The number of occurrences of AdditionalNumericlaParam is specified by the
+    The number of occurrences of AdditionalNumericalParam is specified by the
     value of *number of additional numerical parameters*
 
     Attributes:
-        label (str): 
+        label (str):
         unit (str):
-        value (str): 
+        value (str):
     """
+
     label: str
     unit: str
     value: float
@@ -144,7 +150,7 @@ class VamasBlock:
         day (int): (03)
         hour (int): 24-hour clock (04)
         minute (int): (05)
-        second (int): 
+        second (int):
             If the value of any of the above six items is not known the value
             -1 should be entered as a dummy value.
             (06)
@@ -160,9 +166,9 @@ class VamasBlock:
             (08)
 
         technique (str):
-            ( AES diff | AES dir | EDX | ELS | FABMS | FABMS energy spec |
-            ISS | SIMS | SIMS energy spec | SNMS | SNMS energy spec | UPS |
-            XPS | XRF )
+            ( AES diff | AES dir | EDX | ELS | FABMS | FABMS energy spec
+            | ISS | SIMS | SIMS energy spec | SNMS | SNMS energy spec | UPS
+            | XPS | XRF )
             (09)
 
         x_coord (int):
@@ -299,7 +305,7 @@ class VamasBlock:
             x-direction for both EDX and XRF.
             *Analysis width x* is in micrometres.
             (27)
-        
+
         analysis_width_y (float):
             The analysis width y is the gated signal width of the source in the
             y-direction in the plane perpendicular to the beam for FABMS,
@@ -376,7 +382,7 @@ class VamasBlock:
             This is the system dead time, except for EDX and XRF where it is
             the livetime-corrected acquisition time. In the case of a dead
             time, a positive value indicates that the count rate should be
-            corrected by dividing by (1 - measured rate x dead time) whereas a 
+            corrected by dividing by (1 - measured rate x dead time) whereas a
             negative value indicates a correction by multiplying
             by (exp(true count rate x dead time)).
             *Signal time correction* is in seconds.
@@ -412,6 +418,7 @@ class VamasBlock:
             (40)
 
     """
+
     block_identifier: Optional[str] = None
     sample_identifier: Optional[str] = None
 

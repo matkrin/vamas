@@ -64,10 +64,11 @@ class FutureUpgradeExperimentEntry:
     then discarded.
 
     Attributes:
-        label (str): 
+        label (str):
         unit (str):
 
     """
+
     label: str
     unit: str
 
@@ -94,57 +95,61 @@ class VamasHeader:
             The comment may include details of the last calibration
             of the instrument
 
-        experiment_mode (str): Experiment mode
+        experiment_mode (str): Experiment mode \n
             ( MAP | MAPDP | MAPSV | MAPSVDP | NORM | SDP | SDPSV | SEM )
             The contents of each block in the experiment are indicated by the
             values of experiment mode as follows:
 
-            - **MAP** A spectrum which refers to a specified point in a
+            - MAP
+                A spectrum which refers to a specified point in a
                 regular two-dimensional spatial array.
-
-            - **MAPDP** A spectrum which refers to a specified point in a
-                regular two-dimensional spatial array and to a specified layer
-                in a depth profile.
-
-            - **MAPSV** A complete set of single values of a fixed number of 
+            - MAPDP
+                A spectrum which refers to a specified point in a regular
+                two-dimensional spatial array and to a specified layer in a
+                depth profile.
+            - MAPSV
+                A complete set of single values of a fixed number of
                 variables for every point in a regular two-dimensional spatial
                 array. Note that an x linescan consists of a map with the value
                 of number of analysis positions equal to the value of number of
                 discrete x coordinates available in full map, that is, the
                 number of discrete y coordinates is unity; in a y linescan the
                 roles of x and y are reversed.
-
-            - **MAPSVDP** A complete set of single values of a fixed number of
+            - MAPSVDP
+                A complete set of single values of a fixed number of
                 variables for every point in a regular two-dimensional array
                 for one layer in a depth profile. Successive blocks refer to
                 successive layers in the depth profile.
-
-            - **NORM** Either independent data or data which refers to a
+            - NORM
+                Either independent data or data which refers to a
                 specified set of single values of one or more experimental
                 variables; the data may be spectral or non-spectral.
-
-            - **SDP** A spectrum which refers to a specified layer in a depth
+            - SDP
+                A spectrum which refers to a specified layer in a depth
                 profile.
-
-            - **SDPSV** A complete set of single values of a fixed number of
+            - SDPSV
+                A complete set of single values of a fixed number of
                 variables for every layer in a depth profile.
-
-            - **SEM** An electron emission intensity for every point in a
+            - SEM
+                An electron emission intensity for every point in a
                 regular two-dimensional spatial array.
 
         scan_mode (str): Scan Mode
             ( 'REGULAR' | 'IRREGULAR' | 'MAPPING )
-            If the value of *experiment mode* is **MAPSV**, **MAPSVDP** or
-            **SEM** then the value of *scan mode* must be **MAPPING**,
-            otherwise if the data is in the form of an abscissa start, an
-            abscissa increment and a number of complete sets of values of one
-            or more experimental variables then the value of *scan mode* is
-            **REGULAR**, otherwise the value of *scan mode* is **IRREGULAR**.
+            If the value of :attr:`~VamasHeader.experiment_mode` is **MAPSV**,
+            **MAPSVDP** or **SEM** then the value of
+            :attr:`~VamasHeader.scan_mode` must be **MAPPING**, otherwise if
+            the data is in the form of an abscissa start, an abscissa increment
+            and a number of complete sets of values of one or more experimental
+            variables then the value of :attr:`~VamasHeader.scan_mode` is
+            **REGULAR**, otherwise the value of :attr:`~VamasHeader.scan_mode`
+            is **IRREGULAR**.
 
         num_spectral_regions (int): Number of spectral regions
             Normally only one technique is used in an experiment but there may
             be more. The value of *number of spectral regions* is the sum for
-            all techniques of the numbers of spectral regions in each technique.
+            all techniques of the numbers of spectral regions in each
+            technique.
             *Number of spectral regions* is inserted if and only if the value
             of *experiment mode* is **MAP**, **MAPDP**, **NORM** or **SDP**.
             (optional-sequence)
@@ -197,7 +202,8 @@ class VamasHeader:
             experiment entries
 
 
-        future_upgrade_experiment_entries (list of FutureUpgradeExperimentEntry):
+        future_upgrade_experiment_entries
+            (list of FutureUpgradeExperimentEntry):
             List of future upgrade experiment entries.
             The number of occurrences of *future upgrade experiment entry* is
             given by the value of *number of future upgrade experiment entries*
