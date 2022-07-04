@@ -16,7 +16,7 @@ from .vamas_block import (
 
 
 class Vamas:
-    """Class for parsing a vamas file
+    """Parse a vamas file
 
     Args:
         file (Union[str, Path]): vamas file to be parsed
@@ -39,7 +39,7 @@ class Vamas:
 
 
 def read_vamas(f: TextIO) -> tuple[VamasHeader, List[VamasBlock]]:
-    """Parses a vamas file
+    """Parse a vamas file
 
     Args:
         f (TextIO): file descripter for a vamas file

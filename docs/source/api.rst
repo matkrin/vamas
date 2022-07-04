@@ -1,11 +1,9 @@
-API
-===
+API-Reference
+=============
 
-.. module:: vamas
+.. toctree::
+   :maxdepth: 4
 
-.. autoclass:: Vamas
-
-
-.. module:: vamas.vamas_header
-
-.. autoclass:: VamasHeader
+   vamas
+   vamas_header
+   vamas_block

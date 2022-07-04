@@ -4,9 +4,11 @@ from typing import Optional, List
 
 @dataclass
 class LinescanCoordinates:
-    """
+    """Information about linescan coordinates in mapping experiments
 
-    Inserted if and only if the value of experiment mode is **MAPSV**,
+    Inserted if and only if the value of
+    :attr:`VamasHeader.experiment_mode
+    <vamas.vamas_header.VamasHeader.experiment_mode>` is **MAPSV**,
     **MAPSVDP** or **SEM**.
     They are required for specifying the size and shape of the map and for
     relating the order in the scan sequence to the position on the sample.
@@ -14,7 +16,7 @@ class LinescanCoordinates:
     left-hand side of the frame and increase towards the right-hand side,
     and y-values start at unity at the top of the frame and increase towards
     the bottom of the frame, as shown below.
-    (18)
+    **(18)**
 
     +------------------+
     | 1, 1        N, 1 |
@@ -25,12 +27,13 @@ class LinescanCoordinates:
     +------------------+
 
     Attributes:
-        first_linescan_start_x (int):
-        first_linescan_start_y (int):
-        first_linescan_finish_x (int):
-        first_linescan_finish_y (int):
-        last_linescan_finish_x (int):
-        last_linescan_finish_y (int):
+        first_linescan_start_x (int): Start x-value of the first linescan.
+        first_linescan_start_y (int): Start y-value of the first linescan.
+        first_linescan_finish_x (int): End x-value of the first linescan.
+        first_linescan_finish_y (int): End y-value of the first linescan.
+        last_linescan_finish_x (int): End x-value of the last linescan.
+        last_linescan_finish_y (int): End y-value of the last linescan.
+
     """
 
     first_linescan_start_x: int
@@ -43,32 +46,35 @@ class LinescanCoordinates:
 
 @dataclass
 class SputteringSource:
-    """
+    """Information about the sputtering source
 
     For a sputtering source used in addition to the analysis source, as in
-    depth profiling, in AES diff, AES dir, EDX, ELS, UPS, XPS or XRF.
-    Inserted if and only if both (1) the value of technique is **AES diff**,
-    **AES dir**, **EDX**, **ELS**, **UPS**, **XPS** or **XRF**, and (2) the
-    value of *experiment mode* is **MAPDP**, **MAPSVDP**, **SDP** or **SDPSV**.
-    (37)
+    depth profiling.
+    Inserted if and only if both (1) the value of :attr:`VamasBlock.technique`
+    is **AES diff**, **AES dir**, **EDX**, **ELS**, **UPS**, **XPS** or
+    **XRF**, and (2) the value of :attr:`VamasHeader.experiment_mode
+    <vamas.vamas_header.VamasHeader.experiment_mode>` is **MAPDP**,
+    **MAPSVDP**, **SDP** or **SDPSV**.
+    **(37)**
 
 
     Attributes:
-        energy (float): Energy in electron volts
-        beam_current (float): Current in nanoamps or equivalent for neutrals
-        width_x (float): x-width in micrometres at the sample in the plane
-            perpendicular to the sputtering source beam
-        width_y (float): y-width in micrometres at the sample in the plane
-            perpendicular to the sputtering source beam
-        polar_incidence_angle (float): degrees from upward z-direction,
-            defined by the sample stage
-        azimuth (float): degrees clockwise from the y-direction towards the
-            operator, defined by the sample stage
-        mode (str):
-            The value of sputtering mode is either 'continuous', when
-            sputtering continues while spectral data is being recorded, or
-            'cyclic', when sputtering is suspended while spectral data is being
-            recorded.
+        energy (float): Energy of the sputtering source in electron volts.
+        beam_current (float): Beam current of the sputtering source in nanoamps
+            or equivalent for neutrals.
+        width_x (float): X-width in micrometres at the sample in the plane
+            perpendicular to the sputtering source beam.
+        width_y (float): Y-width in micrometres at the sample in the plane
+            perpendicular to the sputtering source beam.
+        polar_incidence_angle (float): Polar incidence angle in degrees from
+            upward z-direction, defined by the sample stage.
+        azimuth (float): Azimuth angle in degrees clockwise from the
+            y-direction towards the operator, defined by the sample stage
+        mode (str): Mode of the sputtering source.
+            The value is either 'continuous', when sputtering continues while
+            spectral data is being recorded, or 'cyclic', when sputtering is
+            suspended while spectral data is being recorded.
+
     """
 
     energy: float
@@ -82,35 +88,39 @@ class SputteringSource:
 
 @dataclass
 class CorrespondingVariable:
-    """
-    The number of occurrences of CorrespondingVariable is specified by
-    the value of number of corresponding variables. The order in which
-    the pairs of entries appear is the same as the order in which the
-    corresponding values of corresponding variable label are given.
+    """Information about the measured values
+
+    The number of occurrences of :class:`CorrespondingVariable` is specified by
+    the value of :attr:`VamasBlock.num_corresponding_variables`.
+    The order in which the entries appear is the same as the order in
+    which the corresponding values of :attr:`~CorrespondingVariable.label`
+    are given.
 
     Attributes:
-        label (str):
-        unit (str):
-        y_values (List[float]):
-            The number of occurrences of ordinate value is specified by the
-            value of *number of ordinate values* above. If the value of *number
-            of corresponding variables* is greater than unity then the data is
-            sent in the form of successive complete sets, each set consisting
-            of an ordinate value for each of the corresponding variables
-            arranged in the same order as that in which each value of
-            corresponding variable label is given above.
+        label (str): Label of the corresponding variable.
+        unit (str): Unit of the corresponding variable.
+        y_values (List[float]): Measured y-values.
+            The number of occurrences of ordinate values is specified by the
+            value of :attr:`VamasBlock.num_y_values`. If this value is greater
+            than unity then the data is sent in the form of successive
+            complete sets, each set consisting of an ordinate y_value for each
+            of the corresponding variables arranged in the same order as that
+            in which each value of :attr:`~CorrespondingVariable.label` is
+            given.
             The minus-sign followed by the empty-sequence indicates that there
-            must be at least one ordinate value.
-        y_min (float):
+            must be at least one y value.
+        y_min (float): Minimal measured y-value.
             The number of occurrences of entries is specified by the value of
-            *number of corresponding variables* above. The order in which the
-            entries appear is the same as the order in which the *corresponding
-            values of *corresponding variable label* are given.
-        y_max (float):
+            :attr:`VamasBlock.num_corresponding_variables`. The order in which
+            the entries appear is the same as the order in which the
+            corresponding values of :attr:`~CorrespondingVariable.label`
+            are given.
+        y_max (float): Maximal measured y-value.
             The number of occurrences of entries is specified by the value of
-            *number of corresponding variables* above. The order in which the
-            entries appear is the same as the order in which the *corresponding
-            values of *corresponding variable label* are given.
+            :attr:`VamasBlock.num_corresponding_variables`. The order in which
+            the entries appear is the same as the order in which the
+            corresponding values of :attr:`~CorrespondingVariable.label`
+            are given.
     """
 
     label: str
@@ -122,15 +132,16 @@ class CorrespondingVariable:
 
 @dataclass
 class AdditionalNumericalParam:
-    """
+    """Information about additional numerical parameters
 
     The number of occurrences of AdditionalNumericalParam is specified by the
-    value of *number of additional numerical parameters*
+    value of :attr:`VamasBlock.num_additional_numerical_params`.
 
     Attributes:
-        label (str):
-        unit (str):
-        value (str):
+        label (str): Label of the additional numerical parameter.
+        unit (str): Unit of the additional numerical parameter.
+        value (str): Value of the additional numerical parameter.
+
     """
 
     label: str
@@ -140,209 +151,166 @@ class AdditionalNumericalParam:
 
 @dataclass
 class VamasBlock:
-    """
+    """Information about a measurement as part of an experiment
+
+    VamasBlock contains the information about one part of the experiment, e.g.
+    one spectral region or scan in XPS measurements or one image in an
+    SEM experiment.
+
     Attributes:
-        block_identifier (str):
-        sample_identifier (str):
-
-        year (int): Gregorian calendar year, for example, '1987' (01)
-        month (int): (02)
-        day (int): (03)
-        hour (int): 24-hour clock (04)
-        minute (int): (05)
-        second (int):
-            If the value of any of the above six items is not known the value
+        block_identifier (str): Identifier of the block.
+        sample_identifier (str): Identifier of the sample.
+        year (int): Year of the measurement.
+            Gregorian calendar year, e.g., '1987'.
+            If the value is not known, the value -1 should be entered as a
+            dummy value.
+        month (int): Month of the measurement.
+            If the value is not known, the value -1 should be entered as a
+            dummy value.
+        day (int): Day of the measurement.
+            If the value is not known, the value -1 should be entered as a
+            dummy value.
+        hour (int): Hour as part of the measurement time.
+            In 24-hour clock format. If the value is not known, the value
             -1 should be entered as a dummy value.
-            (06)
-
+        minute (int): Minute as part of the measurement time.
+            If the value is not known, the value -1 should be entered as a
+            dummy value.
+        second (int): Second as part of the measurement time.
+            If the value is not known, the value -1 should be entered as a
+            dummy value.
         num_hours_advance_gmt (float): Number of hours in advance of Greenwich
-            Mean Time
-            (07)
-
-        num_lines_block_comment (int): (08)
-        block_comment (str): Concatenated comment lines
-            (The number of occurrences of comment line is specified by the
-            value of number of lines in block comment above.)
-            (08)
-
-        technique (str):
-            ( AES diff | AES dir | EDX | ELS | FABMS | FABMS energy spec
-            | ISS | SIMS | SIMS energy spec | SNMS | SNMS energy spec | UPS
-            | XPS | XRF )
-            (09)
-
-        x_coord (int):
+            Mean Time.
+        num_lines_block_comment (int): Number of lines of block comments.
+        block_comment (str): Concatenated block comment lines.
+            The number of occurrences of comment line is specified by the
+            value of number of lines in block comment above.
+        technique (str): Measurement Technique.
+            One of the values 'AES diff' | 'AES dir' | 'EDX' | 'ELS' | 'FABMS'
+            | 'FABMS energy spec' | 'ISS' | 'SIMS' | 'SIMS energy spec'
+            | 'SNMS' | 'SNMS energy spec' | 'UPS' | 'XPS' | 'XRF'.
+        x_coord (int): X-coordinate.
             The ordinal number, starting with unity, of the point in the array
             along the analysis source deflection system x-axis
             Only inserted if and only if the value of experiment mode is either
             **MAP** or **MAPDI**.
-            (10)
-
-        y_coord (int):
+        y_coord (int): Y-coordinate.
             The ordinal number, starting with unity, of the point in the array
             along the analysis source deflection system y-axis.
             Only inserted if and only if the value of experiment mode is either
             **MAP** or **MAPDI**.
-            (10)
-
-        values_exp_var (list): Value of experimental variable
-            *Value of experimental variable* may be, for example, total time in
-            seconds, total etch time in seconds, temperature in Kelvin, energy
-            in electron volts or mass in unified atomic mass units.
-            The number of occurrences of *value of experimental variable* is
-            specified by the value of *number of experimental variables* above,
+        values_exp_var (list): Values of experimental variables.
+            May be, for example, total time in seconds, total etch time in
+            seconds, temperature in Kelvin, energy in electron volts or mass
+            in unified atomic mass units.
+            The number of items in the list is specified by the value of
+            :attr:`VamasBlock.num_experiment_variables
+            <vamas.vamas_header.VamasHeader.num_experiment_variables>`,
             and the order in which the values are given is the same as the
-            order in which experimental variable label and experimental
-            variable units are declared above.
-            (11)
-
-
-        analysis_source_label (str):
-            (12)
-
-        sputtering_z (int): sputtering ion or atom atomic number
+            order in which :attr:`ExperimentVariable.label
+            <vamas.vamas_header.ExperimentVariable.label>` and
+            :attr:`ExperimentVariable.unit
+            <vamas.vamas_header.ExperimentVariable.unit>` are declared.
+        analysis_source_label (str): Label of the Analysis source.
+        sputtering_z (int): Species of the sputtering ion or atom in atomic
+            number.
             Inserted if and only if either (1) the value of *experiment mode*
             is **MAPDP**, **MAPSVDP**, **SDP** or **SDPSV**, or (2) the value
             of *technique* is **FABMS**, **FABMS energy spec**, **ISS**,
-            **SIMS**, **SIMS energy spec**, **SNMS** or **SNMS energy spec**
-            (13)
-            (13)
-
-        sputtering_num_particles (float): number of atoms in sputtering ion or
-            atom particle
+            **SIMS**, **SIMS energy spec**, **SNMS** or **SNMS energy spec**.
+        sputtering_num_particles (float): Number of particles in sputtering ion
+            or atom particle.
             Inserted if and only if either (1) the value of *experiment mode*
             is **MAPDP**, **MAPSVDP**, **SDP** or **SDPSV**, or (2) the value
             of *technique* is **FABMS**, **FABMS energy spec**, **ISS**,
-            **SIMS**, **SIMS energy spec**, **SNMS** or **SNMS energy spec**
-            (13)
-            (13)
-
-        sputtering_charge (float): sputtering ion or atom charge sign and
-            number
+            **SIMS**, **SIMS energy spec**, **SNMS** or **SNMS energy spec**.
+        sputtering_charge (float): Charge sign and number of the sputtering
+            ion or atom.
             Inserted if and only if either (1) the value of *experiment mode*
             is **MAPDP**, **MAPSVDP**, **SDP** or **SDPSV**, or (2) the value
             of *technique* is **FABMS**, **FABMS energy spec**, **ISS**,
-            **SIMS**, **SIMS energy spec**, **SNMS** or **SNMS energy spec**
-            (13)
-
-        analysis_source_characteristic_energy (float): energy in electron volts
-            (14)
-
-        analysis_source_strength (float):
-            power in watts for XPS and XRF, beam current in nanoamps for AES,
-            EDX, ISS, SIMS and SNMS; beam equivalent for FABMS
-            (15)
-
-        analysis_source_beam_width_x (float):
-            width in micrometres at the sample in the plane perpendicular to
-            the source beam
-            (16)
-
-        analysis_source_beam_width_y (float):
-            width in micrometres at the sample in the plane perpendicular to
-            the source beam
-            (16)
-
-        field_view_x (float):
-            micrometres
+            **SIMS**, **SIMS energy spec**, **SNMS** or **SNMS energy spec**.
+        analysis_source_characteristic_energy (float): Characteristic energy
+            of the analysis source in electron volts.
+        analysis_source_strength (float): Strengh of the analysis source.
+            Power of the analysis source in watts for XPS and XRF, beam current
+            in nanoamps for AES, EDX, ISS, SIMS and SNMS; beam equivalent for
+            FABMS.
+        analysis_source_beam_width_x (float): Width of the beam in
+            x-direction in micrometres at the sample in the plane perpendicular
+            to the source beam.
+        analysis_source_beam_width_y (float): Width of the beam in
+            y-direction in micrometres at the sample in the plane perpendicular
+            to the source beam.
+        field_view_x (float): Field of view in x-direction in micrometres.
             Inserted if and only if the value of experiment mode is **MAP**,
-            **MAPDP**, **MAPSV**, **MAPSVDP** or **SEM**
-            (17)
-
-        field_view_y (float):
-            micrometres
+            **MAPDP**, **MAPSV**, **MAPSVDP** or **SEM**.
+        field_view_y (float) Field of view in y-direction in micrometres
             Inserted if and only if the value of experiment mode is **MAP**,
-            **MAPDP**, **MAPSV**, **MAPSVDP** or **SEM**
-            (17)
-
-        linescan_coordinates (LinescanCoordinates):
-            (18)
-
-        analysis_source_polar_incidence_angle (float):
-            Degrees from upward zdirection, defined by the sample stage
-            (19)
-
-        analysis_source_azimuth (float):
-            Degrees clockwise from the y-direction towards the operator,
-            defined by the sample stage
-            (20)
-
-        analyzer_mode (str):
-            ( FAT | FRR | constant delta m | constant m / delta m )
-            (21)
-
-        analyzer_pass_energy_or_retard_ratio_or_mass_res (float):
-            Energy in electron volts, mass in amu
-            (22)
-
-        differential_width (float):
+            **MAPDP**, **MAPSV**, **MAPSVDP** or **SEM**.
+        linescan_coordinates (LinescanCoordinates): Linescan coordinates.
+        analysis_source_polar_incidence_angle (float): Incidence angle of
+            the analysis source.
+            In degrees from upward z-direction, defined by the sample stage.
+        analysis_source_azimuth (float): Azimuth angle of the analysis source.
+            In degrees clockwise from the y-direction towards the operator,
+            defined by the sample stage.
+        analyzer_mode (str): Analyzer mode.
+            The value is on of  'FAT' | 'FRR' | 'constant delta m'
+            | 'constant m / delta m'.
+        analyzer_pass_energy_or_retard_ratio_or_mass_res (float): Pass energy
+            or retard ration or mass resolution of the analyser.
+            The unit for energy is in electron volts, the one for mass in amu.
+        differential_width (float): Differential width.
             Electron volts peak-to-peak for sinusoidal modulation or computer
             differentiation.
             Inserted if and only if the value of technique is **AES diff**.
-            (23)
-
-        magnification_analyzer_transfer_lens (float):
-            (24)
-
-        analyzer_work_function_or_acceptance_energy (float):
+        magnification_analyzer_transfer_lens (float): Magnification of the
+            analyzer transfer lens.
+        analyzer_work_function_or_acceptance_energy (float): Work function or
+            acceptance angle of the analyzer.
             Positive value for work function in electron volts for AES, ELS,
             ISS, UPS and XPS. The acceptance energy of an ion is the energy
             filter pass energy of the mass spectrometer for FABMS, SIMS and
             SNMS.
-            (25)
-
-        target_bias (float):
-            In volts, including the sign
-            (26)
-
-        analysis_width_x (float):
+        target_bias (float): Bias of the target.
+            In volts, including the sign.
+        analysis_width_x (float): Analysis width in x-direction.
             The analysis width x is the gated signal width of the source in the
-            x-direction in the plane perpendicular to the beam for FABMS,
-            FABMS energy spec, ISS, SIMS, SIMS energy spec, SNMS and
-            SNMS energy spec, the analyser slit length divided by the
-            magnification of the analyser transfer lens to that slit for AES
-            diff, AES dir, ELS, UPS and XPS, and is the source width in the
-            x-direction for both EDX and XRF.
-            *Analysis width x* is in micrometres.
-            (27)
-
-        analysis_width_y (float):
+            x-direction in the plane perpendicular to the beam for **FABMS**,
+            **FABMS energy spec**, **ISS**, **SIMS**, **SIMS energy spec**,
+            **SNMS** and **SNMS energy spec**, the analyser slit length divided
+            by the magnification of the analyser transfer lens to that slit for
+            **AES diff**, **AES dir**, **ELS**, **UPS** and **XPS**, and is the
+            source width in the x-direction for both **EDX** and **XRF**.\n
+            In micrometres.
+        analysis_width_y (float): Analysis width in y-direction.
             The analysis width y is the gated signal width of the source in the
-            y-direction in the plane perpendicular to the beam for FABMS,
-            FABMS energy spec, ISS, SIMS, SIMS energy spec, SNMS and
-            SNMS energy spec, the analyser slit length divided by the
-            magnification of the analyser transfer lens to that slit for AES
-            diff, AES dir, ELS, UPS and XPS, and is the source width in the
-            y-direction for both EDX and XRF.
-            *Analysis width y* is in micrometres.
-            (27)
-
-        analyzer_axis_take_off_polar_angle (float):
-            Degrees from upward z-direction, defined by the sample stage
-            (28)
-
-        analyzer_axis_take_off_azimuth (float):
+            y-direction in the plane perpendicular to the beam for **FABMS**,
+            **FABMS energy spec**, **ISS**, **SIMS**, **SIMS energy spec**,
+            **SNMS** and **SNMS energy spec**, the analyser slit length divided
+            by the magnification of the analyser transfer lens to that slit for
+            **AES diff**, **AES dir**, **ELS**, **UPS** and **yPS**, and is the
+            source width in the y-direction for both **EDX** and **XRF**.\n
+            In micrometres.
+        analyzer_axis_take_off_polar_angle (float): Analyzer axis take off
+            polar angle.
+            Degrees from upward z-direction, defined by the sample stage.
+        analyzer_axis_take_off_azimuth (float): Analyzer axis take off
+            azimuth.
             Degrees clockwise from the y-direction towards the operator,
-            defined by the sample stage
-            (28)
-
-        species_label (str)
-            Elemental symbol or molecular formula
-            (29)
-
-        transition_or_charge_state_label (str):
-            For example, 'KLL' for AES, '1s' for XPS, '-1' for SIMS.
-            (30)
-
-        charge_detected_particle (int):
-            For example, -1 for AES and XPS, +1 for positive SIMS.
-            (30)
-
-
-        x_label (str):
-            Inserted if and only if the value of scan mode is **REGULAR**
-            (31)
-        x_units (str): x-units
+            defined by the sample stage.
+        species_label (str): Label of the species.
+            Elemental symbol or molecular formula.
+        transition_or_charge_state_label (str): Label of the transition or
+            charge state.
+            For example, 'KLL' for **AES**, '1s' for **XPS**, '-1' for
+            **SIMS**.
+        charge_detected_particle (int): Charge of the detected particle.
+            For example, -1 for **AES** and **XPS**, +1 for positive **SIMS**.
+        x_label (str): Label of the x-values.
+            Inserted if and only if the value of scan mode is **REGULAR**.
+        x_units (str): Unit of the x-values.
 
             +------------+----------------------------------------------+
             | experiment | unit corresponding to technique              |
@@ -370,79 +338,63 @@ class VamasBlock:
             | SDPSV      | 's'        | 's'        |                    |
             +------------+------------+------------+--------------------+
 
-            Inserted if and only if the value of scan mode is **REGULAR**
-            (31)
+            Inserted if and only if the value of scan mode is **REGULAR**.
 
-        x_start (float):
-            Inserted if and only if the value of scan mode is **REGULAR**
-            (31)
-        x_step (float):
-            Inserted if and only if the value of scan mode is **REGULAR**
-            (31)
+        x_start (float): Start value of the x-values.
+            Inserted if and only if the value of scan mode is **REGULAR**.
 
-        num_corresponding_variables (int):
+        x_step (float): Step size between x-values.
+            Inserted if and only if the value of scan mode is **REGULAR**.
+
+        num_corresponding_variables (int): Number of corresponding variables.
             If the data is in the form of sets of corresponding values of two
-            or more variables then *number of corresponlding variables* is
-            equal to the number of variables, otherwise it is equal to unity.
-            (32)
-
-        corresponding_variables (List[CorrespondingVariable]):
-            (32)
-
-        signal_mode (str):
-            ( analogue | pulse counting )
+            or more variables then
+            :attr:`~VamasBlock.num_corresponding_variables` is equal to the
+            number of variables, otherwise it is equal to unity.
+        corresponding_variables (List[CorrespondingVariable]): Corresponding
+            Variables.
+        signal_mode (str): Signal mode.
+            Is either 'analogue' | 'pulse counting'.
             Analogue signals, while recorded digitally, may be of either sign
             and have a gain which may be noted in the block comment.
             Pulse counting signals are integers with values equal to or greater
             than zero.
-            (33)
-
-        signal_collection_time (float):
+        signal_collection_time (float): Signal collection time.
             Time in seconds per scan for each channel or array-point, except
-            for both EDX and XRF where it is the total spectrum collection time
-            (34)
-
-        num_scans_to_compile_block (int):
-            (35)
-
-        signal_time_correction (float):
-            This is the system dead time, except for EDX and XRF where it is
-            the livetime-corrected acquisition time. In the case of a dead
-            time, a positive value indicates that the count rate should be
-            corrected by dividing by (1 - measured rate x dead time) whereas a
+            for both **EDX** and **XRF** where it is the total spectrum
+            collection time.
+        num_scans_to_compile_block (int): Number of scan to compile block.
+            This is the number of measurement recordings to get the data block,
+            e.g. the number of sweeps for **XPS**.
+        signal_time_correction (float): Time correction for the signal.
+            This is the system dead time, except for **EDX** and **XRF** where
+            it is the livetime-corrected acquisition time. In the case of a
+            dead time, a positive value indicates that the count rate should be
+            corrected by dividing by (1 - measured rate * dead time) whereas a
             negative value indicates a correction by multiplying
-            by (exp(true count rate x dead time)).
-            *Signal time correction* is in seconds.
-            (36)
-
-        sputtering_source (SputteringSource):
-            (37)
-
-        sample_normal_polar_angle_tilt (float):
-            Degrees from upward z-direction, defined by the sample stage
-            (38)
-
-        sample_normal_tilt_azimuth (float):
+            by (exp(true count rate * dead time)). In seconds.
+        sputtering_source (SputteringSource): Sputtering source.
+        sample_normal_polar_angle_tilt (float): Sample normal polar angle of
+            tilt.
+            Degrees from upward z-direction, defined by the sample stage.
+        sample_normal_tilt_azimuth (float): Sample normal tilt azimuth.
             Degrees clockwise from the y-direction towards the operator,
-            defined by the sample stage
-            (38)
-
-        sample_rotation_angle (float):
+            defined by the sample stage.
+        sample_rotation_angle (float): Sample rotation angle.
             Degrees clockwise rotation about the sample normal. If this is
             referenced to a particular direction on the sample this direction
-            would be specified in a comment line at item number 8.
-            (39)
-
-        num_additional_numerical_params (int):
-            (40)
+            would be specified in a comment line at
+            :attr:`~VamasBlock.block_comment`.
+        num_additional_numerical_params (int): Number of additional numberical
+            parameters.
         additional_numerical_params (List[AdditionalNumericalParam]):
-            (40)
-
-        num_y_values (int):
-            The value of number of ordinate values is equal to product of the
-            value of number of corresponding variables and the number of sets
-            of corresponding variables to be transferred.
-            (40)
+            Additional numberical parameters.
+        num_y_values (int): Number of y-values.
+            The value of number of y-values (ordinate values) is equal to
+            product of the value of
+            :attr:`~VamasBlock.num_corresponding_variables` and
+            the number of sets of :class:`CorrespondingVariable`s to be
+            transferred.
 
     """
 
