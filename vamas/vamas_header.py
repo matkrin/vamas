@@ -6,8 +6,8 @@ from typing import Optional, List
 class ExperimentVariable:
     """
 
-    The number of occurrences of *ExperimentVariable* is specified by the value
-    of *number of experimental variables* in *VamasHeader*.
+    The number of occurrences of :class:`~ExperimentVariable` is specified by
+    the value of *number of experimental variables* in :class:`~VamasHeader`.
 
     Attributes:
         label (str):
@@ -56,9 +56,10 @@ class ExperimentVariable:
 class FutureUpgradeExperimentEntry:
     """
 
-    The number of occurrences of *FutureUpgradeExperimentEntry* is given by
-    the value of *number of future upgrade experiment entries* in
-    *VamesHeader*.
+    The number of occurrences of :class:`~FutureUpgradeExperimentEntry` is
+    given by the value of
+    :attr:`~VamasHeader.num_future_upgrade_experiment_entries` in
+    :class:`~VamasHeader`.
     It is defined as a text line so that any integer, real number or text line
     inserted here by a future upgrade of the format can be read as a text line
     then discarded.
@@ -147,28 +148,32 @@ class VamasHeader:
 
         num_spectral_regions (int): Number of spectral regions
             Normally only one technique is used in an experiment but there may
-            be more. The value of *number of spectral regions* is the sum for
-            all techniques of the numbers of spectral regions in each
-            technique.
-            *Number of spectral regions* is inserted if and only if the value
-            of *experiment mode* is **MAP**, **MAPDP**, **NORM** or **SDP**.
+            be more. The value of :attr:`~VamasHeader.num_spectral_regions` is
+            the sum for all techniques of the numbers of spectral regions in
+            each technique.
+            :attr:`~VamasHeader.num_spectral_regions` is inserted if and only
+            if the value of :attr:`~VamasHeader.experiment_mode` is **MAP**,
+            **MAPDP**, **NORM** or **SDP**.
             (optional-sequence)
 
         num_analysis_positions (int): Number of analysis positions.
-            Inserted if and only if the value of experiment mode is either
-            **MAP** or **MAPDP**.
+            Inserted if and only if the value of
+            :attr:`~VamasHeader.experiment_mode` is either **MAP** or
+            **MAPDP**.
             (optional-sequence)
 
         num_discrete_x_coords_in_full_map (int): Number of discrete x
-            coordinates available in full map.
-            Inserted if and only if the value of *experiment mode* is either
-            **MAP** or **MAPDP**.
+            coordinates available in full map.\n
+            Inserted if and only if the value of
+            :attr:`~VamasHeader.experiment_mode` is either **MAP** or
+            **MAPDP**.
             (optional-sequence)
 
-        num_discrete_y_coords_in_full_map (int): number of discrete y
-            coordinates available in full map.
-            Inserted if and only if the value of *experiment mode* is either
-            **MAP** or **MAPDP**.
+        num_discrete_y_coords_in_full_map (int): Number of discrete y
+            coordinates available in full map.\n
+            Inserted if and only if the value of
+            :attr:`~VamasHeader.experiment_mode` is either **MAP** or
+            **MAPDP**.
             (optional-sequence)
 
         num_experiment_variables (int): Number of experimental variables
@@ -176,26 +181,27 @@ class VamasHeader:
             block to block through the experiment but which remains constant
             within each block.
 
-        experiment_variables (ExperimentVariable):
+        experiment_variables (Optional[List[ExperimentVariable]]):
             (optional-sequence)
 
         num_entries_inclusion_exclusion (int): Parameter inclusion or exclusion
             prefix number
 
-        block_params_includes (list of bool):
+        block_params_includes (List[bool]):
 
         num_manually_entered_items_in_block (int): Prefix number of manually
-            entered item
+            entered item\n
             The number of occurrences of *prefix number of manually entered
-            item* is specified by the value of *number of manually entered
-            items in block* above. If this is greater than zero then the values
-            of successive occurrences of *prefix number of manually entered
-            item* should be in ascending order. Any of the items preceded by
-            prefix numbers in comment brackets in the syntax-rule defining
-            *block* which need to be evaluated by the operator and manually
-            entered from the keyboard should be included in this list. If an
-            item is to be expressed as a real number and the operator is unable
-            to supply a value then the computer should enter the value 1E37.
+            item* is specified by the value of
+            :attr:`~VamasHeader.num_manually_entered_items_in_block` above.
+            If this is greater than zero then the values of successive
+            occurrences of *prefix number of manually entered item* should
+            be in ascending order. Any of the items preceded by prefix numbers
+            in comment brackets in the syntax-rule defining *block* which need
+            to be evaluated by the operator and manually entered from the
+            keyboard should be included in this list. If an item is to be
+            expressed as a real number and the operator is unable to supply a
+            value then the computer should enter the value 1E37.
             (repeated-sequence)
 
         num_future_upgrade_experiment_entries (int): Number of future upgrade
@@ -203,49 +209,53 @@ class VamasHeader:
 
 
         future_upgrade_experiment_entries
-            (list of FutureUpgradeExperimentEntry):
+            (Optional[List[FutureUpgradeExperimentEntry]]):
             List of future upgrade experiment entries.
-            The number of occurrences of *future upgrade experiment entry* is
-            given by the value of *number of future upgrade experiment entries*
-            above. It is defined as a text line so that any integer,
-            real number or text line inserted here by a future upgrade of the
-            format can be read as a text line then discarded.
+            The number of occurrences of :class:`~FutureUpgradeExperimentEntry`
+            is given by the value of
+            :attr:`~VamasHeader.num_future_upgrade_experiment_entries`.
+            It is defined as a text line so that any integer, real number or
+            text line inserted here by a future upgrade of the format can be
+            read as a text line then discarded.
             (repeated-sequence)
 
         num_future_upgrade_block_entries (int):
-            *Number of future upgrade experiment entries and number of future
-            upgrade block entries* are included in case the format is upgraded
-            in the future to include more non-optional, non-repeating
-            parameters. The numbers of these new parameters will be entered
-            here so that old programs can skip the new parameters in new data,
-            and new programs will not try to read the new parameters in old
-            data. For the present both of them would be set to zero.
+            :attr:`~VamasHeader.num_future_upgrade_experiment_entries` and
+            :attr:`~VamasHeader.num_future_upgrade_block_entries` are included
+            in case the format is upgraded in the future to include more
+            non-optional, non-repeating parameters. The numbers of these new
+            parameters will be entered here so that old programs can skip the
+            new parameters in new data, and new programs will not try to read
+            the new parameters in old data. For the present both of them would
+            be set to zero.
 
         num_blocks (int): Number of blocks.
 
     """
 
-    format_identifier: Optional[str] = None
-    institution_identifier: Optional[str] = None
-    instrument_model_identifier: Optional[str] = None
-    operator_identifier: Optional[str] = None
-    experiment_identifier: Optional[str] = None
-    num_lines_comment: Optional[int] = None
-    comment: Optional[str] = None
-    experiment_mode: Optional[str] = None
-    scan_mode: Optional[str] = None
+    format_identifier: str
+    institution_identifier: str
+    instrument_model_identifier: str
+    operator_identifier: str
+    experiment_identifier: str
+    num_lines_comment: int
+    comment: Optional[str]
+    experiment_mode: str
+    scan_mode: str
+    num_experiment_variables: int
+    num_entries_inclusion_exclusion: int
+    block_params_includes: List[bool]
+    num_manually_entered_items_in_block: int
+    num_future_upgrade_experiment_entries: int
+    num_future_upgrade_block_entries: int
+    num_blocks: int
+
+    # Optional-Sequences
     num_spectral_regions: Optional[int] = None
     num_analysis_positions: Optional[int] = None
     num_discrete_x_coords_in_full_map: Optional[int] = None
     num_discrete_y_coords_in_full_map: Optional[int] = None
-    num_experiment_variables: Optional[int] = None
     experiment_variables: Optional[List[ExperimentVariable]] = None
-    num_entries_inclusion_exclusion: Optional[int] = None
-    block_params_includes: Optional[List[bool]] = None
-    num_manually_entered_items_in_block: Optional[int] = None
-    num_future_upgrade_experiment_entries: Optional[int] = None
     future_upgrade_experiment_entries: Optional[
         List[FutureUpgradeExperimentEntry]
     ] = None
-    num_future_upgrade_block_entries: Optional[int] = None
-    num_blocks: Optional[int] = None
