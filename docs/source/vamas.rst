@@ -7,4 +7,3 @@ Vamas
    :members:
 
 .. module:: vamas.vamas
-.. autofunction:: read_vamas

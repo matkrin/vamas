@@ -1,5 +1,5 @@
-Vamas Block
-===========
+VamasBlock
+==========
 
 .. module:: vamas.vamas_block
 

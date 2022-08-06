@@ -1,5 +1,5 @@
-Vamas Header
-============
+VamasHeader
+===========
 
 .. module:: vamas.vamas_header
 
