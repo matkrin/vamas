@@ -35,6 +35,7 @@ See the `documentation`_ for all attributes of those classes.
 
 .. _`documentation`: https://matkrin.github.io/vamas
 
+|
 
 ----
 
