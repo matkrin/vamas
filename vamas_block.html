@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VamasBlock &mdash; vamas 0.1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="VamasHeader" href="vamas_header.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> vamas
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="api.html">API-Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="vamas.html">Vamas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vamas_header.html">VamasHeader</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">VamasBlock</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">VamasBlock</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#correspondingvariable">CorrespondingVariable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#linescancoordinates">LinescanCoordinates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sputteringsource">SputteringSource</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#additionalnumericalparam">AdditionalNumericalParam</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">vamas</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="api.html">API-Reference</a> &raquo;</li>
+      <li>VamasBlock</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/vamas_block.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-vamas.vamas_block">
+<span id="vamasblock"></span><h1>VamasBlock<a class="headerlink" href="#module-vamas.vamas_block" title="Permalink to this heading"></a></h1>
+<section id="id1">
+<h2>VamasBlock<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vamas.vamas_block.</span></span><span class="sig-name descname"><span class="pre">VamasBlock</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block_identifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_identifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">year</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">month</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">day</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hour</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minute</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">second</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_hours_advance_gmt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_lines_block_comment</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_comment</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">technique</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values_exp_var</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">analysis_source_label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">analysis_source_characteristic_energy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">analysis_source_strength</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">analysis_source_beam_width_x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">analysis_source_beam_width_y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">analysis_source_polar_incidence_angle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">analysis_source_azimuth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">analyzer_mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">analyzer_pass_energy_or_retard_ratio_or_mass_res</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">magnification_analyzer_transfer_lens</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">analyzer_work_function_or_acceptance_energy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_bias</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">analysis_width_x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">analysis_width_y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">analyzer_axis_take_off_polar_angle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">analyzer_axis_take_off_azimuth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">species_label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition_or_charge_state_label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge_detected_particle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_units</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_step</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_corresponding_variables</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">corresponding_variables</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#vamas.vamas_block.CorrespondingVariable" title="vamas.vamas_block.CorrespondingVariable"><span class="pre">CorrespondingVariable</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signal_mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signal_collection_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_scans_to_compile_block</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signal_time_correction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_normal_polar_angle_tilt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_normal_tilt_azimuth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_rotation_angle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_additional_numerical_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">additional_numerical_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#vamas.vamas_block.AdditionalNumericalParam" title="vamas.vamas_block.AdditionalNumericalParam"><span class="pre">AdditionalNumericalParam</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_y_values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_coord</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_coord</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sputtering_z</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sputtering_num_particles</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sputtering_charge</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field_view_x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field_view_y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linescan_coordinates</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#vamas.vamas_block.LinescanCoordinates" title="vamas.vamas_block.LinescanCoordinates"><span class="pre">LinescanCoordinates</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">differential_width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sputtering_source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#vamas.vamas_block.SputteringSource" title="vamas.vamas_block.SputteringSource"><span class="pre">SputteringSource</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vamas.vamas_block.VamasBlock" title="Permalink to this definition"></a></dt>
+<dd><p>Information about a measurement as part of an experiment</p>
+<p>VamasBlock contains the information about one part of the experiment, e.g.
+one spectral region or scan in XPS measurements or one image in an
+SEM experiment.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.block_identifier">
+<span class="sig-name descname"><span class="pre">block_identifier</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.block_identifier" title="Permalink to this definition"></a></dt>
+<dd><p>Identifier of the block.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.sample_identifier">
+<span class="sig-name descname"><span class="pre">sample_identifier</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.sample_identifier" title="Permalink to this definition"></a></dt>
+<dd><p>Identifier of the sample.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.year">
+<span class="sig-name descname"><span class="pre">year</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.year" title="Permalink to this definition"></a></dt>
+<dd><p>Year of the measurement.
+Gregorian calendar year, e.g., ‘1987’.
+If the value is not known, the value -1 should be entered as a
+dummy value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.month">
+<span class="sig-name descname"><span class="pre">month</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.month" title="Permalink to this definition"></a></dt>
+<dd><p>Month of the measurement.
+If the value is not known, the value -1 should be entered as a
+dummy value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.day">
+<span class="sig-name descname"><span class="pre">day</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.day" title="Permalink to this definition"></a></dt>
+<dd><p>Day of the measurement.
+If the value is not known, the value -1 should be entered as a
+dummy value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.hour">
+<span class="sig-name descname"><span class="pre">hour</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.hour" title="Permalink to this definition"></a></dt>
+<dd><p>Hour as part of the measurement time.
+In 24-hour clock format. If the value is not known, the value
+-1 should be entered as a dummy value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.minute">
+<span class="sig-name descname"><span class="pre">minute</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.minute" title="Permalink to this definition"></a></dt>
+<dd><p>Minute as part of the measurement time.
+If the value is not known, the value -1 should be entered as a
+dummy value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.second">
+<span class="sig-name descname"><span class="pre">second</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.second" title="Permalink to this definition"></a></dt>
+<dd><p>Second as part of the measurement time.
+If the value is not known, the value -1 should be entered as a
+dummy value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.num_hours_advance_gmt">
+<span class="sig-name descname"><span class="pre">num_hours_advance_gmt</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.num_hours_advance_gmt" title="Permalink to this definition"></a></dt>
+<dd><p>Number of hours in advance of Greenwich
+Mean Time.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.num_lines_block_comment">
+<span class="sig-name descname"><span class="pre">num_lines_block_comment</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.num_lines_block_comment" title="Permalink to this definition"></a></dt>
+<dd><p>Number of lines of block comments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.block_comment">
+<span class="sig-name descname"><span class="pre">block_comment</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.block_comment" title="Permalink to this definition"></a></dt>
+<dd><p>Concatenated block comment lines.
+The number of occurrences of comment line is specified by the
+value of number of lines in block comment above.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.technique">
+<span class="sig-name descname"><span class="pre">technique</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.technique" title="Permalink to this definition"></a></dt>
+<dd><p>Measurement Technique.
+One of the values ‘AES diff’ | ‘AES dir’ | ‘EDX’ | ‘ELS’ | ‘FABMS’
+| ‘FABMS energy spec’ | ‘ISS’ | ‘SIMS’ | ‘SIMS energy spec’
+| ‘SNMS’ | ‘SNMS energy spec’ | ‘UPS’ | ‘XPS’ | ‘XRF’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.x_coord">
+<span class="sig-name descname"><span class="pre">x_coord</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.x_coord" title="Permalink to this definition"></a></dt>
+<dd><p>X-coordinate.
+The ordinal number, starting with unity, of the point in the array
+along the analysis source deflection system x-axis
+Only inserted if and only if the value of experiment mode is either
+<strong>MAP</strong> or <strong>MAPDI</strong>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.y_coord">
+<span class="sig-name descname"><span class="pre">y_coord</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.y_coord" title="Permalink to this definition"></a></dt>
+<dd><p>Y-coordinate.
+The ordinal number, starting with unity, of the point in the array
+along the analysis source deflection system y-axis.
+Only inserted if and only if the value of experiment mode is either
+<strong>MAP</strong> or <strong>MAPDI</strong>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.values_exp_var">
+<span class="sig-name descname"><span class="pre">values_exp_var</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.values_exp_var" title="Permalink to this definition"></a></dt>
+<dd><p>Values of experimental variables.
+May be, for example, total time in seconds, total etch time in
+seconds, temperature in Kelvin, energy in electron volts or mass
+in unified atomic mass units.
+The number of items in the list is specified by the value of
+<a class="reference internal" href="vamas_header.html#vamas.vamas_header.VamasHeader.num_experiment_variables" title="vamas.vamas_header.VamasHeader.num_experiment_variables"><code class="xref py py-attr docutils literal notranslate"><span class="pre">VamasBlock.num_experiment_variables</span></code></a>,
+and the order in which the values are given is the same as the
+order in which <a class="reference internal" href="vamas_header.html#vamas.vamas_header.ExperimentVariable.label" title="vamas.vamas_header.ExperimentVariable.label"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ExperimentVariable.label</span></code></a> and
+<a class="reference internal" href="vamas_header.html#vamas.vamas_header.ExperimentVariable.unit" title="vamas.vamas_header.ExperimentVariable.unit"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ExperimentVariable.unit</span></code></a> are declared.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.analysis_source_label">
+<span class="sig-name descname"><span class="pre">analysis_source_label</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.analysis_source_label" title="Permalink to this definition"></a></dt>
+<dd><p>Label of the Analysis source.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.sputtering_z">
+<span class="sig-name descname"><span class="pre">sputtering_z</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.sputtering_z" title="Permalink to this definition"></a></dt>
+<dd><p>Species of the sputtering ion or atom in atomic
+number.
+Inserted if and only if either (1) the value of <em>experiment mode</em>
+is <strong>MAPDP</strong>, <strong>MAPSVDP</strong>, <strong>SDP</strong> or <strong>SDPSV</strong>, or (2) the value
+of <em>technique</em> is <strong>FABMS</strong>, <strong>FABMS energy spec</strong>, <strong>ISS</strong>,
+<strong>SIMS</strong>, <strong>SIMS energy spec</strong>, <strong>SNMS</strong> or <strong>SNMS energy spec</strong>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.sputtering_num_particles">
+<span class="sig-name descname"><span class="pre">sputtering_num_particles</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.sputtering_num_particles" title="Permalink to this definition"></a></dt>
+<dd><p>Number of particles in sputtering ion
+or atom particle.
+Inserted if and only if either (1) the value of <em>experiment mode</em>
+is <strong>MAPDP</strong>, <strong>MAPSVDP</strong>, <strong>SDP</strong> or <strong>SDPSV</strong>, or (2) the value
+of <em>technique</em> is <strong>FABMS</strong>, <strong>FABMS energy spec</strong>, <strong>ISS</strong>,
+<strong>SIMS</strong>, <strong>SIMS energy spec</strong>, <strong>SNMS</strong> or <strong>SNMS energy spec</strong>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.sputtering_charge">
+<span class="sig-name descname"><span class="pre">sputtering_charge</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.sputtering_charge" title="Permalink to this definition"></a></dt>
+<dd><p>Charge sign and number of the sputtering
+ion or atom.
+Inserted if and only if either (1) the value of <em>experiment mode</em>
+is <strong>MAPDP</strong>, <strong>MAPSVDP</strong>, <strong>SDP</strong> or <strong>SDPSV</strong>, or (2) the value
+of <em>technique</em> is <strong>FABMS</strong>, <strong>FABMS energy spec</strong>, <strong>ISS</strong>,
+<strong>SIMS</strong>, <strong>SIMS energy spec</strong>, <strong>SNMS</strong> or <strong>SNMS energy spec</strong>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.analysis_source_characteristic_energy">
+<span class="sig-name descname"><span class="pre">analysis_source_characteristic_energy</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.analysis_source_characteristic_energy" title="Permalink to this definition"></a></dt>
+<dd><p>Characteristic energy
+of the analysis source in electron volts.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.analysis_source_strength">
+<span class="sig-name descname"><span class="pre">analysis_source_strength</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.analysis_source_strength" title="Permalink to this definition"></a></dt>
+<dd><p>Strengh of the analysis source.
+Power of the analysis source in watts for XPS and XRF, beam current
+in nanoamps for AES, EDX, ISS, SIMS and SNMS; beam equivalent for
+FABMS.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.analysis_source_beam_width_x">
+<span class="sig-name descname"><span class="pre">analysis_source_beam_width_x</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.analysis_source_beam_width_x" title="Permalink to this definition"></a></dt>
+<dd><p>Width of the beam in
+x-direction in micrometres at the sample in the plane perpendicular
+to the source beam.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.analysis_source_beam_width_y">
+<span class="sig-name descname"><span class="pre">analysis_source_beam_width_y</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.analysis_source_beam_width_y" title="Permalink to this definition"></a></dt>
+<dd><p>Width of the beam in
+y-direction in micrometres at the sample in the plane perpendicular
+to the source beam.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.field_view_x">
+<span class="sig-name descname"><span class="pre">field_view_x</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.field_view_x" title="Permalink to this definition"></a></dt>
+<dd><p>Field of view in x-direction in micrometres.
+Inserted if and only if the value of experiment mode is <strong>MAP</strong>,
+<strong>MAPDP</strong>, <strong>MAPSV</strong>, <strong>MAPSVDP</strong> or <strong>SEM</strong>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.field_view_y">
+<span class="sig-name descname"><span class="pre">field_view_y</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.field_view_y" title="Permalink to this definition"></a></dt>
+<dd><p>Inserted if and only if the value of experiment mode is <strong>MAP</strong>,
+<strong>MAPDP</strong>, <strong>MAPSV</strong>, <strong>MAPSVDP</strong> or <strong>SEM</strong>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.linescan_coordinates">
+<span class="sig-name descname"><span class="pre">linescan_coordinates</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.linescan_coordinates" title="Permalink to this definition"></a></dt>
+<dd><p>Linescan coordinates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#vamas.vamas_block.LinescanCoordinates" title="vamas.vamas_block.LinescanCoordinates">LinescanCoordinates</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.analysis_source_polar_incidence_angle">
+<span class="sig-name descname"><span class="pre">analysis_source_polar_incidence_angle</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.analysis_source_polar_incidence_angle" title="Permalink to this definition"></a></dt>
+<dd><p>Incidence angle of
+the analysis source.
+In degrees from upward z-direction, defined by the sample stage.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.analysis_source_azimuth">
+<span class="sig-name descname"><span class="pre">analysis_source_azimuth</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.analysis_source_azimuth" title="Permalink to this definition"></a></dt>
+<dd><p>Azimuth angle of the analysis source.
+In degrees clockwise from the y-direction towards the operator,
+defined by the sample stage.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.analyzer_mode">
+<span class="sig-name descname"><span class="pre">analyzer_mode</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.analyzer_mode" title="Permalink to this definition"></a></dt>
+<dd><p>Analyzer mode.
+The value is on of  ‘FAT’ | ‘FRR’ | ‘constant delta m’
+| ‘constant m / delta m’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.analyzer_pass_energy_or_retard_ratio_or_mass_res">
+<span class="sig-name descname"><span class="pre">analyzer_pass_energy_or_retard_ratio_or_mass_res</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.analyzer_pass_energy_or_retard_ratio_or_mass_res" title="Permalink to this definition"></a></dt>
+<dd><p>Pass energy
+or retard ration or mass resolution of the analyser.
+The unit for energy is in electron volts, the one for mass in amu.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.differential_width">
+<span class="sig-name descname"><span class="pre">differential_width</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.differential_width" title="Permalink to this definition"></a></dt>
+<dd><p>Differential width.
+Electron volts peak-to-peak for sinusoidal modulation or computer
+differentiation.
+Inserted if and only if the value of technique is <strong>AES diff</strong>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.magnification_analyzer_transfer_lens">
+<span class="sig-name descname"><span class="pre">magnification_analyzer_transfer_lens</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.magnification_analyzer_transfer_lens" title="Permalink to this definition"></a></dt>
+<dd><p>Magnification of the
+analyzer transfer lens.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.analyzer_work_function_or_acceptance_energy">
+<span class="sig-name descname"><span class="pre">analyzer_work_function_or_acceptance_energy</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.analyzer_work_function_or_acceptance_energy" title="Permalink to this definition"></a></dt>
+<dd><p>Work function or
+acceptance angle of the analyzer.
+Positive value for work function in electron volts for AES, ELS,
+ISS, UPS and XPS. The acceptance energy of an ion is the energy
+filter pass energy of the mass spectrometer for FABMS, SIMS and
+SNMS.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.target_bias">
+<span class="sig-name descname"><span class="pre">target_bias</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.target_bias" title="Permalink to this definition"></a></dt>
+<dd><p>Bias of the target.
+In volts, including the sign.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.analysis_width_x">
+<span class="sig-name descname"><span class="pre">analysis_width_x</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.analysis_width_x" title="Permalink to this definition"></a></dt>
+<dd><p>Analysis width in x-direction.
+The analysis width x is the gated signal width of the source in the
+x-direction in the plane perpendicular to the beam for <strong>FABMS</strong>,
+<strong>FABMS energy spec</strong>, <strong>ISS</strong>, <strong>SIMS</strong>, <strong>SIMS energy spec</strong>,
+<strong>SNMS</strong> and <strong>SNMS energy spec</strong>, the analyser slit length divided
+by the magnification of the analyser transfer lens to that slit for
+<strong>AES diff</strong>, <strong>AES dir</strong>, <strong>ELS</strong>, <strong>UPS</strong> and <strong>XPS</strong>, and is the
+source width in the x-direction for both <strong>EDX</strong> and <strong>XRF</strong>.</p>
+<p>In micrometres.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.analysis_width_y">
+<span class="sig-name descname"><span class="pre">analysis_width_y</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.analysis_width_y" title="Permalink to this definition"></a></dt>
+<dd><p>Analysis width in y-direction.
+The analysis width y is the gated signal width of the source in the
+y-direction in the plane perpendicular to the beam for <strong>FABMS</strong>,
+<strong>FABMS energy spec</strong>, <strong>ISS</strong>, <strong>SIMS</strong>, <strong>SIMS energy spec</strong>,
+<strong>SNMS</strong> and <strong>SNMS energy spec</strong>, the analyser slit length divided
+by the magnification of the analyser transfer lens to that slit for
+<strong>AES diff</strong>, <strong>AES dir</strong>, <strong>ELS</strong>, <strong>UPS</strong> and <strong>yPS</strong>, and is the
+source width in the y-direction for both <strong>EDX</strong> and <strong>XRF</strong>.</p>
+<p>In micrometres.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.analyzer_axis_take_off_polar_angle">
+<span class="sig-name descname"><span class="pre">analyzer_axis_take_off_polar_angle</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.analyzer_axis_take_off_polar_angle" title="Permalink to this definition"></a></dt>
+<dd><p>Analyzer axis take off
+polar angle.
+Degrees from upward z-direction, defined by the sample stage.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.analyzer_axis_take_off_azimuth">
+<span class="sig-name descname"><span class="pre">analyzer_axis_take_off_azimuth</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.analyzer_axis_take_off_azimuth" title="Permalink to this definition"></a></dt>
+<dd><p>Analyzer axis take off
+azimuth.
+Degrees clockwise from the y-direction towards the operator,
+defined by the sample stage.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.species_label">
+<span class="sig-name descname"><span class="pre">species_label</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.species_label" title="Permalink to this definition"></a></dt>
+<dd><p>Label of the species.
+Elemental symbol or molecular formula.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.transition_or_charge_state_label">
+<span class="sig-name descname"><span class="pre">transition_or_charge_state_label</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.transition_or_charge_state_label" title="Permalink to this definition"></a></dt>
+<dd><p>Label of the transition or
+charge state.
+For example, ‘KLL’ for <strong>AES</strong>, ‘1s’ for <strong>XPS</strong>, ‘-1’ for
+<strong>SIMS</strong>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.charge_detected_particle">
+<span class="sig-name descname"><span class="pre">charge_detected_particle</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.charge_detected_particle" title="Permalink to this definition"></a></dt>
+<dd><p>Charge of the detected particle.
+For example, -1 for <strong>AES</strong> and <strong>XPS</strong>, +1 for positive <strong>SIMS</strong>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.x_label">
+<span class="sig-name descname"><span class="pre">x_label</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.x_label" title="Permalink to this definition"></a></dt>
+<dd><p>Label of the x-values.
+Inserted if and only if the value of scan mode is <strong>REGULAR</strong>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.x_units">
+<span class="sig-name descname"><span class="pre">x_units</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.x_units" title="Permalink to this definition"></a></dt>
+<dd><p>Unit of the x-values.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 36%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td rowspan="2"><p>experiment</p>
+<p>mode</p>
+</td>
+<td colspan="3"><p>unit corresponding to technique</p></td>
+</tr>
+<tr class="row-even"><td><p>AES diff,</p>
+<p>AES dir,</p>
+<p>EDX, ELSS,</p>
+<p>ISS, UPS</p>
+<p>XPS, XRF</p>
+</td>
+<td><p>FABMS,</p>
+<p>SIMS,</p>
+<p>SNMS,</p>
+</td>
+<td><p>FABMS energy spec,</p>
+<p>SIMS energy spec,</p>
+<p>SNMS energy spec,</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>MAP</p>
+<p>MAPDP</p>
+<p>NORM</p>
+<p>SDP</p>
+</td>
+<td><p>‘eV’</p></td>
+<td><p>‘u’ or ‘s’</p></td>
+<td><p>‘eV’</p></td>
+</tr>
+<tr class="row-even"><td><p>SDPSV</p></td>
+<td><p>‘s’</p></td>
+<td><p>‘s’</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Inserted if and only if the value of scan mode is <strong>REGULAR</strong>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.x_start">
+<span class="sig-name descname"><span class="pre">x_start</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.x_start" title="Permalink to this definition"></a></dt>
+<dd><p>Start value of the x-values.
+Inserted if and only if the value of scan mode is <strong>REGULAR</strong>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.x_step">
+<span class="sig-name descname"><span class="pre">x_step</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.x_step" title="Permalink to this definition"></a></dt>
+<dd><p>Step size between x-values.
+Inserted if and only if the value of scan mode is <strong>REGULAR</strong>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.num_corresponding_variables">
+<span class="sig-name descname"><span class="pre">num_corresponding_variables</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.num_corresponding_variables" title="Permalink to this definition"></a></dt>
+<dd><p>Number of corresponding variables.
+If the data is in the form of sets of corresponding values of two
+or more variables then
+<a class="reference internal" href="#vamas.vamas_block.VamasBlock.num_corresponding_variables" title="vamas.vamas_block.VamasBlock.num_corresponding_variables"><code class="xref py py-attr docutils literal notranslate"><span class="pre">num_corresponding_variables</span></code></a> is equal to the
+number of variables, otherwise it is equal to unity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.corresponding_variables">
+<span class="sig-name descname"><span class="pre">corresponding_variables</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.corresponding_variables" title="Permalink to this definition"></a></dt>
+<dd><p>Corresponding
+Variables.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>List[<a class="reference internal" href="#vamas.vamas_block.CorrespondingVariable" title="vamas.vamas_block.CorrespondingVariable">CorrespondingVariable</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.signal_mode">
+<span class="sig-name descname"><span class="pre">signal_mode</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.signal_mode" title="Permalink to this definition"></a></dt>
+<dd><p>Signal mode.
+Is either ‘analogue’ | ‘pulse counting’.
+Analogue signals, while recorded digitally, may be of either sign
+and have a gain which may be noted in the block comment.
+Pulse counting signals are integers with values equal to or greater
+than zero.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.signal_collection_time">
+<span class="sig-name descname"><span class="pre">signal_collection_time</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.signal_collection_time" title="Permalink to this definition"></a></dt>
+<dd><p>Signal collection time.
+Time in seconds per scan for each channel or array-point, except
+for both <strong>EDX</strong> and <strong>XRF</strong> where it is the total spectrum
+collection time.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.num_scans_to_compile_block">
+<span class="sig-name descname"><span class="pre">num_scans_to_compile_block</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.num_scans_to_compile_block" title="Permalink to this definition"></a></dt>
+<dd><p>Number of scan to compile block.
+This is the number of measurement recordings to get the data block,
+e.g. the number of sweeps for <strong>XPS</strong>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.signal_time_correction">
+<span class="sig-name descname"><span class="pre">signal_time_correction</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.signal_time_correction" title="Permalink to this definition"></a></dt>
+<dd><p>Time correction for the signal.
+This is the system dead time, except for <strong>EDX</strong> and <strong>XRF</strong> where
+it is the livetime-corrected acquisition time. In the case of a
+dead time, a positive value indicates that the count rate should be
+corrected by dividing by (1 - measured rate * dead time) whereas a
+negative value indicates a correction by multiplying
+by (exp(true count rate * dead time)). In seconds.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.sputtering_source">
+<span class="sig-name descname"><span class="pre">sputtering_source</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.sputtering_source" title="Permalink to this definition"></a></dt>
+<dd><p>Sputtering source.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#vamas.vamas_block.SputteringSource" title="vamas.vamas_block.SputteringSource">SputteringSource</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.sample_normal_polar_angle_tilt">
+<span class="sig-name descname"><span class="pre">sample_normal_polar_angle_tilt</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.sample_normal_polar_angle_tilt" title="Permalink to this definition"></a></dt>
+<dd><p>Sample normal polar angle of
+tilt.
+Degrees from upward z-direction, defined by the sample stage.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.sample_normal_tilt_azimuth">
+<span class="sig-name descname"><span class="pre">sample_normal_tilt_azimuth</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.sample_normal_tilt_azimuth" title="Permalink to this definition"></a></dt>
+<dd><p>Sample normal tilt azimuth.
+Degrees clockwise from the y-direction towards the operator,
+defined by the sample stage.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.sample_rotation_angle">
+<span class="sig-name descname"><span class="pre">sample_rotation_angle</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.sample_rotation_angle" title="Permalink to this definition"></a></dt>
+<dd><p>Sample rotation angle.
+Degrees clockwise rotation about the sample normal. If this is
+referenced to a particular direction on the sample this direction
+would be specified in a comment line at
+<a class="reference internal" href="#vamas.vamas_block.VamasBlock.block_comment" title="vamas.vamas_block.VamasBlock.block_comment"><code class="xref py py-attr docutils literal notranslate"><span class="pre">block_comment</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.num_additional_numerical_params">
+<span class="sig-name descname"><span class="pre">num_additional_numerical_params</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.num_additional_numerical_params" title="Permalink to this definition"></a></dt>
+<dd><p>Number of additional numberical
+parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.additional_numerical_params">
+<span class="sig-name descname"><span class="pre">additional_numerical_params</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.additional_numerical_params" title="Permalink to this definition"></a></dt>
+<dd><p>Additional numberical parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>List[<a class="reference internal" href="#vamas.vamas_block.AdditionalNumericalParam" title="vamas.vamas_block.AdditionalNumericalParam">AdditionalNumericalParam</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.VamasBlock.num_y_values">
+<span class="sig-name descname"><span class="pre">num_y_values</span></span><a class="headerlink" href="#vamas.vamas_block.VamasBlock.num_y_values" title="Permalink to this definition"></a></dt>
+<dd><p>Number of y-values.
+The value of number of y-values (ordinate values) is equal to
+product of the value of
+<a class="reference internal" href="#vamas.vamas_block.VamasBlock.num_corresponding_variables" title="vamas.vamas_block.VamasBlock.num_corresponding_variables"><code class="xref py py-attr docutils literal notranslate"><span class="pre">num_corresponding_variables</span></code></a> and
+the number of sets of :class:<a href="#id2"><span class="problematic" id="id3">`</span></a>CorrespondingVariable`s to be
+transferred.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="correspondingvariable">
+<h2>CorrespondingVariable<a class="headerlink" href="#correspondingvariable" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="vamas.vamas_block.CorrespondingVariable">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vamas.vamas_block.</span></span><span class="sig-name descname"><span class="pre">CorrespondingVariable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_min</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_max</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vamas.vamas_block.CorrespondingVariable" title="Permalink to this definition"></a></dt>
+<dd><p>Information about the measured values</p>
+<p>The number of occurrences of <a class="reference internal" href="#vamas.vamas_block.CorrespondingVariable" title="vamas.vamas_block.CorrespondingVariable"><code class="xref py py-class docutils literal notranslate"><span class="pre">CorrespondingVariable</span></code></a> is specified by
+the value of <a class="reference internal" href="#vamas.vamas_block.VamasBlock.num_corresponding_variables" title="vamas.vamas_block.VamasBlock.num_corresponding_variables"><code class="xref py py-attr docutils literal notranslate"><span class="pre">VamasBlock.num_corresponding_variables</span></code></a>.
+The order in which the entries appear is the same as the order in
+which the corresponding values of <a class="reference internal" href="#vamas.vamas_block.CorrespondingVariable.label" title="vamas.vamas_block.CorrespondingVariable.label"><code class="xref py py-attr docutils literal notranslate"><span class="pre">label</span></code></a>
+are given.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.CorrespondingVariable.label">
+<span class="sig-name descname"><span class="pre">label</span></span><a class="headerlink" href="#vamas.vamas_block.CorrespondingVariable.label" title="Permalink to this definition"></a></dt>
+<dd><p>Label of the corresponding variable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.CorrespondingVariable.unit">
+<span class="sig-name descname"><span class="pre">unit</span></span><a class="headerlink" href="#vamas.vamas_block.CorrespondingVariable.unit" title="Permalink to this definition"></a></dt>
+<dd><p>Unit of the corresponding variable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.CorrespondingVariable.y_values">
+<span class="sig-name descname"><span class="pre">y_values</span></span><a class="headerlink" href="#vamas.vamas_block.CorrespondingVariable.y_values" title="Permalink to this definition"></a></dt>
+<dd><p>Measured y-values.
+The number of occurrences of ordinate values is specified by the
+value of <a class="reference internal" href="#vamas.vamas_block.VamasBlock.num_y_values" title="vamas.vamas_block.VamasBlock.num_y_values"><code class="xref py py-attr docutils literal notranslate"><span class="pre">VamasBlock.num_y_values</span></code></a>. If this value is greater
+than unity then the data is sent in the form of successive
+complete sets, each set consisting of an ordinate y_value for each
+of the corresponding variables arranged in the same order as that
+in which each value of <a class="reference internal" href="#vamas.vamas_block.CorrespondingVariable.label" title="vamas.vamas_block.CorrespondingVariable.label"><code class="xref py py-attr docutils literal notranslate"><span class="pre">label</span></code></a> is
+given.
+The minus-sign followed by the empty-sequence indicates that there
+must be at least one y value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>List[float]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.CorrespondingVariable.y_min">
+<span class="sig-name descname"><span class="pre">y_min</span></span><a class="headerlink" href="#vamas.vamas_block.CorrespondingVariable.y_min" title="Permalink to this definition"></a></dt>
+<dd><p>Minimal measured y-value.
+The number of occurrences of entries is specified by the value of
+<a class="reference internal" href="#vamas.vamas_block.VamasBlock.num_corresponding_variables" title="vamas.vamas_block.VamasBlock.num_corresponding_variables"><code class="xref py py-attr docutils literal notranslate"><span class="pre">VamasBlock.num_corresponding_variables</span></code></a>. The order in which
+the entries appear is the same as the order in which the
+corresponding values of <a class="reference internal" href="#vamas.vamas_block.CorrespondingVariable.label" title="vamas.vamas_block.CorrespondingVariable.label"><code class="xref py py-attr docutils literal notranslate"><span class="pre">label</span></code></a>
+are given.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.CorrespondingVariable.y_max">
+<span class="sig-name descname"><span class="pre">y_max</span></span><a class="headerlink" href="#vamas.vamas_block.CorrespondingVariable.y_max" title="Permalink to this definition"></a></dt>
+<dd><p>Maximal measured y-value.
+The number of occurrences of entries is specified by the value of
+<a class="reference internal" href="#vamas.vamas_block.VamasBlock.num_corresponding_variables" title="vamas.vamas_block.VamasBlock.num_corresponding_variables"><code class="xref py py-attr docutils literal notranslate"><span class="pre">VamasBlock.num_corresponding_variables</span></code></a>. The order in which
+the entries appear is the same as the order in which the
+corresponding values of <a class="reference internal" href="#vamas.vamas_block.CorrespondingVariable.label" title="vamas.vamas_block.CorrespondingVariable.label"><code class="xref py py-attr docutils literal notranslate"><span class="pre">label</span></code></a>
+are given.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="linescancoordinates">
+<h2>LinescanCoordinates<a class="headerlink" href="#linescancoordinates" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="vamas.vamas_block.LinescanCoordinates">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vamas.vamas_block.</span></span><span class="sig-name descname"><span class="pre">LinescanCoordinates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">first_linescan_start_x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">first_linescan_start_y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">first_linescan_finish_x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">first_linescan_finish_y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_linescan_finish_x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_linescan_finish_y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vamas.vamas_block.LinescanCoordinates" title="Permalink to this definition"></a></dt>
+<dd><p>Information about linescan coordinates in mapping experiments</p>
+<p>Inserted if and only if the value of
+<a class="reference internal" href="vamas_header.html#vamas.vamas_header.VamasHeader.experiment_mode" title="vamas.vamas_header.VamasHeader.experiment_mode"><code class="xref py py-attr docutils literal notranslate"><span class="pre">VamasHeader.experiment_mode</span></code></a> is <strong>MAPSV</strong>,
+<strong>MAPSVDP</strong> or <strong>SEM</strong>.
+They are required for specifying the size and shape of the map and for
+relating the order in the scan sequence to the position on the sample.
+In the coordinate system to be used, x-values start at unity at the
+left-hand side of the frame and increase towards the right-hand side,
+and y-values start at unity at the top of the frame and increase towards
+the bottom of the frame, as shown below.
+<strong>(18)</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>1, 1        N, 1</p>
+<p>1, M        N, M</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.LinescanCoordinates.first_linescan_start_x">
+<span class="sig-name descname"><span class="pre">first_linescan_start_x</span></span><a class="headerlink" href="#vamas.vamas_block.LinescanCoordinates.first_linescan_start_x" title="Permalink to this definition"></a></dt>
+<dd><p>Start x-value of the first linescan.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.LinescanCoordinates.first_linescan_start_y">
+<span class="sig-name descname"><span class="pre">first_linescan_start_y</span></span><a class="headerlink" href="#vamas.vamas_block.LinescanCoordinates.first_linescan_start_y" title="Permalink to this definition"></a></dt>
+<dd><p>Start y-value of the first linescan.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.LinescanCoordinates.first_linescan_finish_x">
+<span class="sig-name descname"><span class="pre">first_linescan_finish_x</span></span><a class="headerlink" href="#vamas.vamas_block.LinescanCoordinates.first_linescan_finish_x" title="Permalink to this definition"></a></dt>
+<dd><p>End x-value of the first linescan.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.LinescanCoordinates.first_linescan_finish_y">
+<span class="sig-name descname"><span class="pre">first_linescan_finish_y</span></span><a class="headerlink" href="#vamas.vamas_block.LinescanCoordinates.first_linescan_finish_y" title="Permalink to this definition"></a></dt>
+<dd><p>End y-value of the first linescan.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.LinescanCoordinates.last_linescan_finish_x">
+<span class="sig-name descname"><span class="pre">last_linescan_finish_x</span></span><a class="headerlink" href="#vamas.vamas_block.LinescanCoordinates.last_linescan_finish_x" title="Permalink to this definition"></a></dt>
+<dd><p>End x-value of the last linescan.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.LinescanCoordinates.last_linescan_finish_y">
+<span class="sig-name descname"><span class="pre">last_linescan_finish_y</span></span><a class="headerlink" href="#vamas.vamas_block.LinescanCoordinates.last_linescan_finish_y" title="Permalink to this definition"></a></dt>
+<dd><p>End y-value of the last linescan.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="sputteringsource">
+<h2>SputteringSource<a class="headerlink" href="#sputteringsource" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="vamas.vamas_block.SputteringSource">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vamas.vamas_block.</span></span><span class="sig-name descname"><span class="pre">SputteringSource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">energy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beam_current</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width_x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width_y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">polar_incidence_angle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">azimuth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vamas.vamas_block.SputteringSource" title="Permalink to this definition"></a></dt>
+<dd><p>Information about the sputtering source</p>
+<p>For a sputtering source used in addition to the analysis source, as in
+depth profiling.
+Inserted if and only if both (1) the value of <a class="reference internal" href="#vamas.vamas_block.VamasBlock.technique" title="vamas.vamas_block.VamasBlock.technique"><code class="xref py py-attr docutils literal notranslate"><span class="pre">VamasBlock.technique</span></code></a>
+is <strong>AES diff</strong>, <strong>AES dir</strong>, <strong>EDX</strong>, <strong>ELS</strong>, <strong>UPS</strong>, <strong>XPS</strong> or
+<strong>XRF</strong>, and (2) the value of <a class="reference internal" href="vamas_header.html#vamas.vamas_header.VamasHeader.experiment_mode" title="vamas.vamas_header.VamasHeader.experiment_mode"><code class="xref py py-attr docutils literal notranslate"><span class="pre">VamasHeader.experiment_mode</span></code></a> is <strong>MAPDP</strong>,
+<strong>MAPSVDP</strong>, <strong>SDP</strong> or <strong>SDPSV</strong>.
+<strong>(37)</strong></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.SputteringSource.energy">
+<span class="sig-name descname"><span class="pre">energy</span></span><a class="headerlink" href="#vamas.vamas_block.SputteringSource.energy" title="Permalink to this definition"></a></dt>
+<dd><p>Energy of the sputtering source in electron volts.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.SputteringSource.beam_current">
+<span class="sig-name descname"><span class="pre">beam_current</span></span><a class="headerlink" href="#vamas.vamas_block.SputteringSource.beam_current" title="Permalink to this definition"></a></dt>
+<dd><p>Beam current of the sputtering source in nanoamps
+or equivalent for neutrals.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.SputteringSource.width_x">
+<span class="sig-name descname"><span class="pre">width_x</span></span><a class="headerlink" href="#vamas.vamas_block.SputteringSource.width_x" title="Permalink to this definition"></a></dt>
+<dd><p>X-width in micrometres at the sample in the plane
+perpendicular to the sputtering source beam.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.SputteringSource.width_y">
+<span class="sig-name descname"><span class="pre">width_y</span></span><a class="headerlink" href="#vamas.vamas_block.SputteringSource.width_y" title="Permalink to this definition"></a></dt>
+<dd><p>Y-width in micrometres at the sample in the plane
+perpendicular to the sputtering source beam.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.SputteringSource.polar_incidence_angle">
+<span class="sig-name descname"><span class="pre">polar_incidence_angle</span></span><a class="headerlink" href="#vamas.vamas_block.SputteringSource.polar_incidence_angle" title="Permalink to this definition"></a></dt>
+<dd><p>Polar incidence angle in degrees from
+upward z-direction, defined by the sample stage.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.SputteringSource.azimuth">
+<span class="sig-name descname"><span class="pre">azimuth</span></span><a class="headerlink" href="#vamas.vamas_block.SputteringSource.azimuth" title="Permalink to this definition"></a></dt>
+<dd><p>Azimuth angle in degrees clockwise from the
+y-direction towards the operator, defined by the sample stage</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.SputteringSource.mode">
+<span class="sig-name descname"><span class="pre">mode</span></span><a class="headerlink" href="#vamas.vamas_block.SputteringSource.mode" title="Permalink to this definition"></a></dt>
+<dd><p>Mode of the sputtering source.
+The value is either ‘continuous’, when sputtering continues while
+spectral data is being recorded, or ‘cyclic’, when sputtering is
+suspended while spectral data is being recorded.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="additionalnumericalparam">
+<h2>AdditionalNumericalParam<a class="headerlink" href="#additionalnumericalparam" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="vamas.vamas_block.AdditionalNumericalParam">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vamas.vamas_block.</span></span><span class="sig-name descname"><span class="pre">AdditionalNumericalParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vamas.vamas_block.AdditionalNumericalParam" title="Permalink to this definition"></a></dt>
+<dd><p>Information about additional numerical parameters</p>
+<p>The number of occurrences of AdditionalNumericalParam is specified by the
+value of <a class="reference internal" href="#vamas.vamas_block.VamasBlock.num_additional_numerical_params" title="vamas.vamas_block.VamasBlock.num_additional_numerical_params"><code class="xref py py-attr docutils literal notranslate"><span class="pre">VamasBlock.num_additional_numerical_params</span></code></a>.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.AdditionalNumericalParam.label">
+<span class="sig-name descname"><span class="pre">label</span></span><a class="headerlink" href="#vamas.vamas_block.AdditionalNumericalParam.label" title="Permalink to this definition"></a></dt>
+<dd><p>Label of the additional numerical parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.AdditionalNumericalParam.unit">
+<span class="sig-name descname"><span class="pre">unit</span></span><a class="headerlink" href="#vamas.vamas_block.AdditionalNumericalParam.unit" title="Permalink to this definition"></a></dt>
+<dd><p>Unit of the additional numerical parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_block.AdditionalNumericalParam.value">
+<span class="sig-name descname"><span class="pre">value</span></span><a class="headerlink" href="#vamas.vamas_block.AdditionalNumericalParam.value" title="Permalink to this definition"></a></dt>
+<dd><p>Value of the additional numerical parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="vamas_header.html" class="btn btn-neutral float-left" title="VamasHeader" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, matkrin.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

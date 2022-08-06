@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VamasHeader &mdash; vamas 0.1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="VamasBlock" href="vamas_block.html" />
+    <link rel="prev" title="Vamas" href="vamas.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> vamas
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="api.html">API-Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="vamas.html">Vamas</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">VamasHeader</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">VamasHeader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#futureupgradeexperimententry">FutureUpgradeExperimentEntry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#experimentvariable">ExperimentVariable</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vamas_block.html">VamasBlock</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">vamas</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="api.html">API-Reference</a> &raquo;</li>
+      <li>VamasHeader</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/vamas_header.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-vamas.vamas_header">
+<span id="vamasheader"></span><h1>VamasHeader<a class="headerlink" href="#module-vamas.vamas_header" title="Permalink to this heading"></a></h1>
+<section id="id1">
+<h2>VamasHeader<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="vamas.vamas_header.VamasHeader">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vamas.vamas_header.</span></span><span class="sig-name descname"><span class="pre">VamasHeader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">format_identifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">institution_identifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">instrument_model_identifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">operator_identifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">experiment_identifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_lines_comment</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comment</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">experiment_mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scan_mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_experiment_variables</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_entries_inclusion_exclusion</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_params_includes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_manually_entered_items_in_block</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_future_upgrade_experiment_entries</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_future_upgrade_block_entries</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_blocks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_spectral_regions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_analysis_positions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_discrete_x_coords_in_full_map</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_discrete_y_coords_in_full_map</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">experiment_variables</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#vamas.vamas_header.ExperimentVariable" title="vamas.vamas_header.ExperimentVariable"><span class="pre">ExperimentVariable</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">future_upgrade_experiment_entries</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#vamas.vamas_header.FutureUpgradeExperimentEntry" title="vamas.vamas_header.FutureUpgradeExperimentEntry"><span class="pre">FutureUpgradeExperimentEntry</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vamas.vamas_header.VamasHeader" title="Permalink to this definition"></a></dt>
+<dd><p>Header information about a Vamas experiment</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_header.VamasHeader.format_identifier">
+<span class="sig-name descname"><span class="pre">format_identifier</span></span><a class="headerlink" href="#vamas.vamas_header.VamasHeader.format_identifier" title="Permalink to this definition"></a></dt>
+<dd><p>Format identifier.
+Must be ‘VAMAS Surface Chemical Analysis Standard Data Transfer
+Format 1988 May 4’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_header.VamasHeader.institution_identifier">
+<span class="sig-name descname"><span class="pre">institution_identifier</span></span><a class="headerlink" href="#vamas.vamas_header.VamasHeader.institution_identifier" title="Permalink to this definition"></a></dt>
+<dd><p>Institution identifier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_header.VamasHeader.instrument_model_identifier">
+<span class="sig-name descname"><span class="pre">instrument_model_identifier</span></span><a class="headerlink" href="#vamas.vamas_header.VamasHeader.instrument_model_identifier" title="Permalink to this definition"></a></dt>
+<dd><p>Instrumental Model Identifier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_header.VamasHeader.operator_identifier">
+<span class="sig-name descname"><span class="pre">operator_identifier</span></span><a class="headerlink" href="#vamas.vamas_header.VamasHeader.operator_identifier" title="Permalink to this definition"></a></dt>
+<dd><p>Operator Identifier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_header.VamasHeader.experiment_identifier">
+<span class="sig-name descname"><span class="pre">experiment_identifier</span></span><a class="headerlink" href="#vamas.vamas_header.VamasHeader.experiment_identifier" title="Permalink to this definition"></a></dt>
+<dd><p>Experiment Identifier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_header.VamasHeader.num_lines_comment">
+<span class="sig-name descname"><span class="pre">num_lines_comment</span></span><a class="headerlink" href="#vamas.vamas_header.VamasHeader.num_lines_comment" title="Permalink to this definition"></a></dt>
+<dd><p>Number of comment lines.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_header.VamasHeader.comment">
+<span class="sig-name descname"><span class="pre">comment</span></span><a class="headerlink" href="#vamas.vamas_header.VamasHeader.comment" title="Permalink to this definition"></a></dt>
+<dd><p>Concatenated comment lines.
+The comment may include details of the last calibration
+of the instrument.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_header.VamasHeader.experiment_mode">
+<span class="sig-name descname"><span class="pre">experiment_mode</span></span><a class="headerlink" href="#vamas.vamas_header.VamasHeader.experiment_mode" title="Permalink to this definition"></a></dt>
+<dd><p>Experiment mode.
+Has one of the values ‘MAP’ | ‘MAPDP’ | ‘MAPSV’ | ‘MAPSVDP’
+| ‘NORM’ | ‘SDP’ | ‘SDPSV’ | ‘SEM’.
+The contents of each block in the experiment are indicated by the
+values of experiment mode as follows:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>MAP</dt><dd><p>A spectrum which refers to a specified point in a
+regular two-dimensional spatial array.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>MAPDP</dt><dd><p>A spectrum which refers to a specified point in a regular
+two-dimensional spatial array and to a specified layer in a
+depth profile.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>MAPSV</dt><dd><p>A complete set of single values of a fixed number of
+variables for every point in a regular two-dimensional spatial
+array. Note that an x linescan consists of a map with the value
+of number of analysis positions equal to the value of number of
+discrete x coordinates available in full map, that is, the
+number of discrete y coordinates is unity; in a y linescan the
+roles of x and y are reversed.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>MAPSVDP</dt><dd><p>A complete set of single values of a fixed number of
+variables for every point in a regular two-dimensional array
+for one layer in a depth profile. Successive blocks refer to
+successive layers in the depth profile.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>NORM</dt><dd><p>Either independent data or data which refers to a
+specified set of single values of one or more experimental
+variables; the data may be spectral or non-spectral.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>SDP</dt><dd><p>A spectrum which refers to a specified layer in a depth
+profile.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>SDPSV</dt><dd><p>A complete set of single values of a fixed number of
+variables for every layer in a depth profile.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>SEM</dt><dd><p>An electron emission intensity for every point in a
+regular two-dimensional spatial array.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_header.VamasHeader.scan_mode">
+<span class="sig-name descname"><span class="pre">scan_mode</span></span><a class="headerlink" href="#vamas.vamas_header.VamasHeader.scan_mode" title="Permalink to this definition"></a></dt>
+<dd><p>Scan Mode.
+Has one of the values ‘REGULAR’ | ‘IRREGULAR’ | ‘MAPPING’.
+If the value of <a class="reference internal" href="#vamas.vamas_header.VamasHeader.experiment_mode" title="vamas.vamas_header.VamasHeader.experiment_mode"><code class="xref py py-attr docutils literal notranslate"><span class="pre">experiment_mode</span></code></a> is <strong>MAPSV</strong>,
+<strong>MAPSVDP</strong> or <strong>SEM</strong> then the value of
+<a class="reference internal" href="#vamas.vamas_header.VamasHeader.scan_mode" title="vamas.vamas_header.VamasHeader.scan_mode"><code class="xref py py-attr docutils literal notranslate"><span class="pre">scan_mode</span></code></a> must be <strong>MAPPING</strong>, otherwise if
+the data is in the form of an abscissa start, an abscissa increment
+and a number of complete sets of values of one or more experimental
+variables then the value of <a class="reference internal" href="#vamas.vamas_header.VamasHeader.scan_mode" title="vamas.vamas_header.VamasHeader.scan_mode"><code class="xref py py-attr docutils literal notranslate"><span class="pre">scan_mode</span></code></a> is
+<strong>REGULAR</strong>, otherwise the value of <a class="reference internal" href="#vamas.vamas_header.VamasHeader.scan_mode" title="vamas.vamas_header.VamasHeader.scan_mode"><code class="xref py py-attr docutils literal notranslate"><span class="pre">scan_mode</span></code></a>
+is <strong>IRREGULAR</strong>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_header.VamasHeader.num_spectral_regions">
+<span class="sig-name descname"><span class="pre">num_spectral_regions</span></span><a class="headerlink" href="#vamas.vamas_header.VamasHeader.num_spectral_regions" title="Permalink to this definition"></a></dt>
+<dd><p>Number of spectral regions.
+Normally only one technique is used in an experiment but there may
+be more. The value of <a class="reference internal" href="#vamas.vamas_header.VamasHeader.num_spectral_regions" title="vamas.vamas_header.VamasHeader.num_spectral_regions"><code class="xref py py-attr docutils literal notranslate"><span class="pre">num_spectral_regions</span></code></a> is
+the sum for all techniques of the numbers of spectral regions in
+each technique.
+<a class="reference internal" href="#vamas.vamas_header.VamasHeader.num_spectral_regions" title="vamas.vamas_header.VamasHeader.num_spectral_regions"><code class="xref py py-attr docutils literal notranslate"><span class="pre">num_spectral_regions</span></code></a> is inserted if and only
+if the value of <a class="reference internal" href="#vamas.vamas_header.VamasHeader.experiment_mode" title="vamas.vamas_header.VamasHeader.experiment_mode"><code class="xref py py-attr docutils literal notranslate"><span class="pre">experiment_mode</span></code></a> is <strong>MAP</strong>,
+<strong>MAPDP</strong>, <strong>NORM</strong> or <strong>SDP</strong>. (optional-sequence)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_header.VamasHeader.num_analysis_positions">
+<span class="sig-name descname"><span class="pre">num_analysis_positions</span></span><a class="headerlink" href="#vamas.vamas_header.VamasHeader.num_analysis_positions" title="Permalink to this definition"></a></dt>
+<dd><p>Number of analysis positions.
+Inserted if and only if the value of
+<a class="reference internal" href="#vamas.vamas_header.VamasHeader.experiment_mode" title="vamas.vamas_header.VamasHeader.experiment_mode"><code class="xref py py-attr docutils literal notranslate"><span class="pre">experiment_mode</span></code></a> is either <strong>MAP</strong> or
+<strong>MAPDP</strong>. (optional-sequence)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_header.VamasHeader.num_discrete_x_coords_in_full_map">
+<span class="sig-name descname"><span class="pre">num_discrete_x_coords_in_full_map</span></span><a class="headerlink" href="#vamas.vamas_header.VamasHeader.num_discrete_x_coords_in_full_map" title="Permalink to this definition"></a></dt>
+<dd><p>Number of discrete x
+coordinates available in full map.
+Inserted if and only if the value of
+<a class="reference internal" href="#vamas.vamas_header.VamasHeader.experiment_mode" title="vamas.vamas_header.VamasHeader.experiment_mode"><code class="xref py py-attr docutils literal notranslate"><span class="pre">experiment_mode</span></code></a> is either <strong>MAP</strong> or
+<strong>MAPDP</strong>. (optional-sequence)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_header.VamasHeader.num_discrete_y_coords_in_full_map">
+<span class="sig-name descname"><span class="pre">num_discrete_y_coords_in_full_map</span></span><a class="headerlink" href="#vamas.vamas_header.VamasHeader.num_discrete_y_coords_in_full_map" title="Permalink to this definition"></a></dt>
+<dd><p>Number of discrete y
+coordinates available in full map.
+Inserted if and only if the value of
+<a class="reference internal" href="#vamas.vamas_header.VamasHeader.experiment_mode" title="vamas.vamas_header.VamasHeader.experiment_mode"><code class="xref py py-attr docutils literal notranslate"><span class="pre">experiment_mode</span></code></a> is either <strong>MAP</strong> or
+<strong>MAPDP</strong>. (optional-sequence)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_header.VamasHeader.num_experiment_variables">
+<span class="sig-name descname"><span class="pre">num_experiment_variables</span></span><a class="headerlink" href="#vamas.vamas_header.VamasHeader.num_experiment_variables" title="Permalink to this definition"></a></dt>
+<dd><p>Number of experimental variables
+An experimental variable is a parameter which may be varied from
+block to block through the experiment but which remains constant
+within each block.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_header.VamasHeader.experiment_variables">
+<span class="sig-name descname"><span class="pre">experiment_variables</span></span><a class="headerlink" href="#vamas.vamas_header.VamasHeader.experiment_variables" title="Permalink to this definition"></a></dt>
+<dd><p>Experiment
+variables. (optional-sequence)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>Optional[List[<a class="reference internal" href="#vamas.vamas_header.ExperimentVariable" title="vamas.vamas_header.ExperimentVariable">ExperimentVariable</a>]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_header.VamasHeader.num_entries_inclusion_exclusion">
+<span class="sig-name descname"><span class="pre">num_entries_inclusion_exclusion</span></span><a class="headerlink" href="#vamas.vamas_header.VamasHeader.num_entries_inclusion_exclusion" title="Permalink to this definition"></a></dt>
+<dd><p>Parameter inclusion or
+exclusion. (prefix number)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_header.VamasHeader.block_params_includes">
+<span class="sig-name descname"><span class="pre">block_params_includes</span></span><a class="headerlink" href="#vamas.vamas_header.VamasHeader.block_params_includes" title="Permalink to this definition"></a></dt>
+<dd><p>Deteminated which parameters are
+included in all blocks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>List[bool]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_header.VamasHeader.num_manually_entered_items_in_block">
+<span class="sig-name descname"><span class="pre">num_manually_entered_items_in_block</span></span><a class="headerlink" href="#vamas.vamas_header.VamasHeader.num_manually_entered_items_in_block" title="Permalink to this definition"></a></dt>
+<dd><p>Prefix number of manually
+entered item.
+The number of occurrences of <em>prefix number of manually entered
+item</em> is specified by the value of
+<a class="reference internal" href="#vamas.vamas_header.VamasHeader.num_manually_entered_items_in_block" title="vamas.vamas_header.VamasHeader.num_manually_entered_items_in_block"><code class="xref py py-attr docutils literal notranslate"><span class="pre">num_manually_entered_items_in_block</span></code></a> above.
+If this is greater than zero then the values of successive
+occurrences of <em>prefix number of manually entered item</em> should
+be in ascending order. Any of the items preceded by prefix numbers
+in comment brackets in the syntax-rule defining <em>block</em> which need
+to be evaluated by the operator and manually entered from the
+keyboard should be included in this list. If an item is to be
+expressed as a real number and the operator is unable to supply a
+value then the computer should enter the value 1E37.
+(repeated-sequence)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_header.VamasHeader.num_future_upgrade_experiment_entries">
+<span class="sig-name descname"><span class="pre">num_future_upgrade_experiment_entries</span></span><a class="headerlink" href="#vamas.vamas_header.VamasHeader.num_future_upgrade_experiment_entries" title="Permalink to this definition"></a></dt>
+<dd><p>Number of future upgrade
+experiment entries.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_header.VamasHeader.future_upgrade_experiment_entries">
+<span class="sig-name descname"><span class="pre">future_upgrade_experiment_entries</span></span><a class="headerlink" href="#vamas.vamas_header.VamasHeader.future_upgrade_experiment_entries" title="Permalink to this definition"></a></dt>
+<dd><p>(Optional[List[FutureUpgradeExperimentEntry]]):
+List of future upgrade experiment entries.
+The number of occurrences of <a class="reference internal" href="#vamas.vamas_header.FutureUpgradeExperimentEntry" title="vamas.vamas_header.FutureUpgradeExperimentEntry"><code class="xref py py-class docutils literal notranslate"><span class="pre">FutureUpgradeExperimentEntry</span></code></a>
+is given by the value of
+<a class="reference internal" href="#vamas.vamas_header.VamasHeader.num_future_upgrade_experiment_entries" title="vamas.vamas_header.VamasHeader.num_future_upgrade_experiment_entries"><code class="xref py py-attr docutils literal notranslate"><span class="pre">num_future_upgrade_experiment_entries</span></code></a>.
+It is defined as a text line so that any integer, real number or
+text line inserted here by a future upgrade of the format can be
+read as a text line then discarded. (repeated-sequence)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>Optional[List[<a class="reference internal" href="#vamas.vamas_header.FutureUpgradeExperimentEntry" title="vamas.vamas_header.FutureUpgradeExperimentEntry">vamas.vamas_header.FutureUpgradeExperimentEntry</a>]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_header.VamasHeader.num_future_upgrade_block_entries">
+<span class="sig-name descname"><span class="pre">num_future_upgrade_block_entries</span></span><a class="headerlink" href="#vamas.vamas_header.VamasHeader.num_future_upgrade_block_entries" title="Permalink to this definition"></a></dt>
+<dd><p><a class="reference internal" href="#vamas.vamas_header.VamasHeader.num_future_upgrade_experiment_entries" title="vamas.vamas_header.VamasHeader.num_future_upgrade_experiment_entries"><code class="xref py py-attr docutils literal notranslate"><span class="pre">num_future_upgrade_experiment_entries</span></code></a> and
+<a class="reference internal" href="#vamas.vamas_header.VamasHeader.num_future_upgrade_block_entries" title="vamas.vamas_header.VamasHeader.num_future_upgrade_block_entries"><code class="xref py py-attr docutils literal notranslate"><span class="pre">num_future_upgrade_block_entries</span></code></a> are included
+in case the format is upgraded in the future to include more
+non-optional, non-repeating parameters. The numbers of these new
+parameters will be entered here so that old programs can skip the
+new parameters in new data, and new programs will not try to read
+the new parameters in old data. For the present both of them would
+be set to zero.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_header.VamasHeader.num_blocks">
+<span class="sig-name descname"><span class="pre">num_blocks</span></span><a class="headerlink" href="#vamas.vamas_header.VamasHeader.num_blocks" title="Permalink to this definition"></a></dt>
+<dd><p>Number of blocks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="futureupgradeexperimententry">
+<h2>FutureUpgradeExperimentEntry<a class="headerlink" href="#futureupgradeexperimententry" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="vamas.vamas_header.FutureUpgradeExperimentEntry">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vamas.vamas_header.</span></span><span class="sig-name descname"><span class="pre">FutureUpgradeExperimentEntry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vamas.vamas_header.FutureUpgradeExperimentEntry" title="Permalink to this definition"></a></dt>
+<dd><p>Information about future uprade experiment entries</p>
+<p>The number of occurrences of <a class="reference internal" href="#vamas.vamas_header.FutureUpgradeExperimentEntry" title="vamas.vamas_header.FutureUpgradeExperimentEntry"><code class="xref py py-class docutils literal notranslate"><span class="pre">FutureUpgradeExperimentEntry</span></code></a> is
+given by the value of
+<a class="reference internal" href="#vamas.vamas_header.VamasHeader.num_future_upgrade_experiment_entries" title="vamas.vamas_header.VamasHeader.num_future_upgrade_experiment_entries"><code class="xref py py-attr docutils literal notranslate"><span class="pre">num_future_upgrade_experiment_entries</span></code></a> in
+<a class="reference internal" href="#vamas.vamas_header.VamasHeader" title="vamas.vamas_header.VamasHeader"><code class="xref py py-class docutils literal notranslate"><span class="pre">VamasHeader</span></code></a>.
+It is defined as a text line so that any integer, real number or text line
+inserted here by a future upgrade of the format can be read as a text line
+then discarded.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_header.FutureUpgradeExperimentEntry.label">
+<span class="sig-name descname"><span class="pre">label</span></span><a class="headerlink" href="#vamas.vamas_header.FutureUpgradeExperimentEntry.label" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_header.FutureUpgradeExperimentEntry.unit">
+<span class="sig-name descname"><span class="pre">unit</span></span><a class="headerlink" href="#vamas.vamas_header.FutureUpgradeExperimentEntry.unit" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="experimentvariable">
+<h2>ExperimentVariable<a class="headerlink" href="#experimentvariable" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="vamas.vamas_header.ExperimentVariable">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vamas.vamas_header.</span></span><span class="sig-name descname"><span class="pre">ExperimentVariable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vamas.vamas_header.ExperimentVariable" title="Permalink to this definition"></a></dt>
+<dd><p>Information about a experimental variable</p>
+<p>The number of occurrences of <a class="reference internal" href="#vamas.vamas_header.ExperimentVariable" title="vamas.vamas_header.ExperimentVariable"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExperimentVariable</span></code></a> is specified by
+the value of <a class="reference internal" href="#vamas.vamas_header.VamasHeader.num_experiment_variables" title="vamas.vamas_header.VamasHeader.num_experiment_variables"><code class="xref py py-attr docutils literal notranslate"><span class="pre">num_experiment_variables</span></code></a> in
+<a class="reference internal" href="#vamas.vamas_header.VamasHeader" title="vamas.vamas_header.VamasHeader"><code class="xref py py-class docutils literal notranslate"><span class="pre">VamasHeader</span></code></a>.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_header.ExperimentVariable.label">
+<span class="sig-name descname"><span class="pre">label</span></span><a class="headerlink" href="#vamas.vamas_header.ExperimentVariable.label" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="vamas.vamas_header.ExperimentVariable.unit">
+<span class="sig-name descname"><span class="pre">unit</span></span><a class="headerlink" href="#vamas.vamas_header.ExperimentVariable.unit" title="Permalink to this definition"></a></dt>
+<dd><p>( c/s | d | degree | eV | K | micro C | micro m | m/s | n | nA
+| ps | s | u | V )
+These values are abbreviations for the units listed below:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>c/s</p></td>
+<td><p>counts per second</p></td>
+</tr>
+<tr class="row-even"><td><p>d</p></td>
+<td><p>dimensionless - just a number, eg. counts per channel</p></td>
+</tr>
+<tr class="row-odd"><td><p>degree</p></td>
+<td><p>angle in degrees</p></td>
+</tr>
+<tr class="row-even"><td><p>eV</p></td>
+<td><p>electron volts</p></td>
+</tr>
+<tr class="row-odd"><td><p>K</p></td>
+<td><p>Kelvin</p></td>
+</tr>
+<tr class="row-even"><td><p>micro C</p></td>
+<td><p>microcoulombs</p></td>
+</tr>
+<tr class="row-odd"><td><p>micro m</p></td>
+<td><p>micrometres</p></td>
+</tr>
+<tr class="row-even"><td><p>m/s</p></td>
+<td><p>metres per second</p></td>
+</tr>
+<tr class="row-odd"><td><p>n</p></td>
+<td><p>not defined here - may be given in a label</p></td>
+</tr>
+<tr class="row-even"><td><p>nA</p></td>
+<td><p>nanoamps</p></td>
+</tr>
+<tr class="row-odd"><td><p>ps</p></td>
+<td><p>picoseconds</p></td>
+</tr>
+<tr class="row-even"><td><p>s</p></td>
+<td><p>seconds</p></td>
+</tr>
+<tr class="row-odd"><td><p>u</p></td>
+<td><p>unified atomic mass units</p></td>
+</tr>
+<tr class="row-even"><td><p>V</p></td>
+<td><p>volts</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="vamas.html" class="btn btn-neutral float-left" title="Vamas" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="vamas_block.html" class="btn btn-neutral float-right" title="VamasBlock" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, matkrin.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
