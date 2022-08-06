@@ -478,3 +478,4 @@ class VamasBlock:
     linescan_coordinates: Optional[LinescanCoordinates] = None
     differential_width: Optional[float] = None
     sputtering_source: Optional[SputteringSource] = None
+

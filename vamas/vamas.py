@@ -14,9 +14,13 @@ from .vamas_block import (
     AdditionalNumericalParam,
 )
 
+from .errors import VmsIdentifierError, FileExtensionError
+
 
 class Vamas:
-    """Parse a vamas file
+    """Main class for handling a vamas file
+
+    Parses the vamas file into the attributes header and blocks.
 
     Args:
         file (Union[str, Path]): vamas file to be parsed
@@ -27,22 +31,19 @@ class Vamas:
     """
 
     def __init__(self, file: Union[str, Path]) -> None:
+        if not str(file).endswith(".vms"):
+            raise FileExtensionError
+
         with open(file) as f:
-            self.header, self.blocks = read_vamas(f)
-
-        if (
-            self.header.format_identifier
-            != "VAMAS Surface Chemical Analysis Standard Data Transfer Format"
-            " 1988 May 4"
-        ):
-            pass
+            self.header, self.blocks = _read_vamas(f)
 
 
-def read_vamas(f: TextIO) -> tuple[VamasHeader, List[VamasBlock]]:
-    """Parse a vamas file
+def _read_vamas(f: TextIO) -> tuple[VamasHeader, List[VamasBlock]]:
+    """Parses a vamas file
 
     Args:
         f (TextIO): file descripter for a vamas file
+
 
     Returns:
         Parsed vamas-file as tuple of :class:`~vamas.vamas_header.VamasHeader`
@@ -51,6 +52,14 @@ def read_vamas(f: TextIO) -> tuple[VamasHeader, List[VamasBlock]]:
 
     h: Dict = {}
     h["format_identifier"] = next(f).strip()
+
+    if (
+        h["format_identifier"]
+        != "VAMAS Surface Chemical Analysis Standard Data Transfer Format"
+        " 1988 May 4"
+    ):
+        raise VmsIdentifierError
+
     h["institution_identifier"] = next(f).strip()
     h["instrument_model_identifier"] = next(f).strip()
     h["operator_identifier"] = next(f).strip()
