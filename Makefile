@@ -3,7 +3,7 @@ test:
 typecheck:
 	poetry run mypy -p vamas
 typecheck-all:
-	poertry run mypy .
+	poetry run mypy .
 format-check:
 	poetry run black --check .
 format:
