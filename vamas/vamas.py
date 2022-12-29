@@ -1,4 +1,4 @@
-from typing import Union, List, Dict, TextIO
+from typing import Union, List, Dict, Tuple, TextIO
 from pathlib import Path
 
 from .vamas_header import (
@@ -38,7 +38,7 @@ class Vamas:
             self.header, self.blocks = _read_vamas(f)
 
 
-def _read_vamas(f: TextIO) -> tuple[VamasHeader, List[VamasBlock]]:
+def _read_vamas(f: TextIO) -> Tuple[VamasHeader, List[VamasBlock]]:
     """Parses a vamas file
 
     Args:
