@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "vamas"
-version = "0.1.0"
+version = "0.1.1"
 description = "Python package to read vamas (.vms) files"
 authors = ["Matthias Krinninger <matkrin@protonmail.com>"]
 license = "BSD-3-Clause"
