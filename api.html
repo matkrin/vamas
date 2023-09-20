@@ -16,6 +16,7 @@
         <script src="_static/underscore.js"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -62,8 +63,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>API-Reference</li>
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">API-Reference</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/api.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -77,19 +78,171 @@
 <h1>API-Reference<a class="headerlink" href="#api-reference" title="Permalink to this heading"></a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="vamas.html">Vamas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vamas.html">Vamas</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vamas.html#vamas.Vamas"><code class="docutils literal notranslate"><span class="pre">Vamas</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vamas.html#vamas.Vamas.header"><code class="docutils literal notranslate"><span class="pre">Vamas.header</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vamas.html#vamas.Vamas.blocks"><code class="docutils literal notranslate"><span class="pre">Vamas.blocks</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="vamas_header.html">VamasHeader</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="vamas_header.html#id1">VamasHeader</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vamas_header.html#futureupgradeexperimententry">FutureUpgradeExperimentEntry</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vamas_header.html#experimentvariable">ExperimentVariable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vamas_header.html#id1">VamasHeader</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vamas_header.html#vamas.vamas_header.VamasHeader"><code class="docutils literal notranslate"><span class="pre">VamasHeader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vamas_header.html#vamas.vamas_header.VamasHeader.format_identifier"><code class="docutils literal notranslate"><span class="pre">VamasHeader.format_identifier</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_header.html#vamas.vamas_header.VamasHeader.institution_identifier"><code class="docutils literal notranslate"><span class="pre">VamasHeader.institution_identifier</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_header.html#vamas.vamas_header.VamasHeader.instrument_model_identifier"><code class="docutils literal notranslate"><span class="pre">VamasHeader.instrument_model_identifier</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_header.html#vamas.vamas_header.VamasHeader.operator_identifier"><code class="docutils literal notranslate"><span class="pre">VamasHeader.operator_identifier</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_header.html#vamas.vamas_header.VamasHeader.experiment_identifier"><code class="docutils literal notranslate"><span class="pre">VamasHeader.experiment_identifier</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_header.html#vamas.vamas_header.VamasHeader.num_lines_comment"><code class="docutils literal notranslate"><span class="pre">VamasHeader.num_lines_comment</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_header.html#vamas.vamas_header.VamasHeader.comment"><code class="docutils literal notranslate"><span class="pre">VamasHeader.comment</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_header.html#vamas.vamas_header.VamasHeader.experiment_mode"><code class="docutils literal notranslate"><span class="pre">VamasHeader.experiment_mode</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_header.html#vamas.vamas_header.VamasHeader.scan_mode"><code class="docutils literal notranslate"><span class="pre">VamasHeader.scan_mode</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_header.html#vamas.vamas_header.VamasHeader.num_spectral_regions"><code class="docutils literal notranslate"><span class="pre">VamasHeader.num_spectral_regions</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_header.html#vamas.vamas_header.VamasHeader.num_analysis_positions"><code class="docutils literal notranslate"><span class="pre">VamasHeader.num_analysis_positions</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_header.html#vamas.vamas_header.VamasHeader.num_discrete_x_coords_in_full_map"><code class="docutils literal notranslate"><span class="pre">VamasHeader.num_discrete_x_coords_in_full_map</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_header.html#vamas.vamas_header.VamasHeader.num_discrete_y_coords_in_full_map"><code class="docutils literal notranslate"><span class="pre">VamasHeader.num_discrete_y_coords_in_full_map</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_header.html#vamas.vamas_header.VamasHeader.num_experiment_variables"><code class="docutils literal notranslate"><span class="pre">VamasHeader.num_experiment_variables</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_header.html#vamas.vamas_header.VamasHeader.experiment_variables"><code class="docutils literal notranslate"><span class="pre">VamasHeader.experiment_variables</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_header.html#vamas.vamas_header.VamasHeader.num_entries_inclusion_exclusion"><code class="docutils literal notranslate"><span class="pre">VamasHeader.num_entries_inclusion_exclusion</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_header.html#vamas.vamas_header.VamasHeader.block_params_includes"><code class="docutils literal notranslate"><span class="pre">VamasHeader.block_params_includes</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_header.html#vamas.vamas_header.VamasHeader.num_manually_entered_items_in_block"><code class="docutils literal notranslate"><span class="pre">VamasHeader.num_manually_entered_items_in_block</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_header.html#vamas.vamas_header.VamasHeader.num_future_upgrade_experiment_entries"><code class="docutils literal notranslate"><span class="pre">VamasHeader.num_future_upgrade_experiment_entries</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_header.html#vamas.vamas_header.VamasHeader.future_upgrade_experiment_entries"><code class="docutils literal notranslate"><span class="pre">VamasHeader.future_upgrade_experiment_entries</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_header.html#vamas.vamas_header.VamasHeader.num_future_upgrade_block_entries"><code class="docutils literal notranslate"><span class="pre">VamasHeader.num_future_upgrade_block_entries</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_header.html#vamas.vamas_header.VamasHeader.num_blocks"><code class="docutils literal notranslate"><span class="pre">VamasHeader.num_blocks</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vamas_header.html#futureupgradeexperimententry">FutureUpgradeExperimentEntry</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vamas_header.html#vamas.vamas_header.FutureUpgradeExperimentEntry"><code class="docutils literal notranslate"><span class="pre">FutureUpgradeExperimentEntry</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vamas_header.html#vamas.vamas_header.FutureUpgradeExperimentEntry.label"><code class="docutils literal notranslate"><span class="pre">FutureUpgradeExperimentEntry.label</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_header.html#vamas.vamas_header.FutureUpgradeExperimentEntry.unit"><code class="docutils literal notranslate"><span class="pre">FutureUpgradeExperimentEntry.unit</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vamas_header.html#experimentvariable">ExperimentVariable</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vamas_header.html#vamas.vamas_header.ExperimentVariable"><code class="docutils literal notranslate"><span class="pre">ExperimentVariable</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vamas_header.html#vamas.vamas_header.ExperimentVariable.label"><code class="docutils literal notranslate"><span class="pre">ExperimentVariable.label</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_header.html#vamas.vamas_header.ExperimentVariable.unit"><code class="docutils literal notranslate"><span class="pre">ExperimentVariable.unit</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="vamas_block.html">VamasBlock</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="vamas_block.html#id1">VamasBlock</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vamas_block.html#correspondingvariable">CorrespondingVariable</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vamas_block.html#linescancoordinates">LinescanCoordinates</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vamas_block.html#sputteringsource">SputteringSource</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vamas_block.html#additionalnumericalparam">AdditionalNumericalParam</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vamas_block.html#id1">VamasBlock</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock"><code class="docutils literal notranslate"><span class="pre">VamasBlock</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.block_identifier"><code class="docutils literal notranslate"><span class="pre">VamasBlock.block_identifier</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.sample_identifier"><code class="docutils literal notranslate"><span class="pre">VamasBlock.sample_identifier</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.year"><code class="docutils literal notranslate"><span class="pre">VamasBlock.year</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.month"><code class="docutils literal notranslate"><span class="pre">VamasBlock.month</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.day"><code class="docutils literal notranslate"><span class="pre">VamasBlock.day</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.hour"><code class="docutils literal notranslate"><span class="pre">VamasBlock.hour</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.minute"><code class="docutils literal notranslate"><span class="pre">VamasBlock.minute</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.second"><code class="docutils literal notranslate"><span class="pre">VamasBlock.second</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.num_hours_advance_gmt"><code class="docutils literal notranslate"><span class="pre">VamasBlock.num_hours_advance_gmt</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.num_lines_block_comment"><code class="docutils literal notranslate"><span class="pre">VamasBlock.num_lines_block_comment</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.block_comment"><code class="docutils literal notranslate"><span class="pre">VamasBlock.block_comment</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.technique"><code class="docutils literal notranslate"><span class="pre">VamasBlock.technique</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.x_coord"><code class="docutils literal notranslate"><span class="pre">VamasBlock.x_coord</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.y_coord"><code class="docutils literal notranslate"><span class="pre">VamasBlock.y_coord</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.values_exp_var"><code class="docutils literal notranslate"><span class="pre">VamasBlock.values_exp_var</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.analysis_source_label"><code class="docutils literal notranslate"><span class="pre">VamasBlock.analysis_source_label</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.sputtering_z"><code class="docutils literal notranslate"><span class="pre">VamasBlock.sputtering_z</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.sputtering_num_particles"><code class="docutils literal notranslate"><span class="pre">VamasBlock.sputtering_num_particles</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.sputtering_charge"><code class="docutils literal notranslate"><span class="pre">VamasBlock.sputtering_charge</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.analysis_source_characteristic_energy"><code class="docutils literal notranslate"><span class="pre">VamasBlock.analysis_source_characteristic_energy</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.analysis_source_strength"><code class="docutils literal notranslate"><span class="pre">VamasBlock.analysis_source_strength</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.analysis_source_beam_width_x"><code class="docutils literal notranslate"><span class="pre">VamasBlock.analysis_source_beam_width_x</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.analysis_source_beam_width_y"><code class="docutils literal notranslate"><span class="pre">VamasBlock.analysis_source_beam_width_y</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.field_view_x"><code class="docutils literal notranslate"><span class="pre">VamasBlock.field_view_x</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.field_view_y"><code class="docutils literal notranslate"><span class="pre">VamasBlock.field_view_y</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.linescan_coordinates"><code class="docutils literal notranslate"><span class="pre">VamasBlock.linescan_coordinates</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.analysis_source_polar_incidence_angle"><code class="docutils literal notranslate"><span class="pre">VamasBlock.analysis_source_polar_incidence_angle</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.analysis_source_azimuth"><code class="docutils literal notranslate"><span class="pre">VamasBlock.analysis_source_azimuth</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.analyzer_mode"><code class="docutils literal notranslate"><span class="pre">VamasBlock.analyzer_mode</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.analyzer_pass_energy_or_retard_ratio_or_mass_res"><code class="docutils literal notranslate"><span class="pre">VamasBlock.analyzer_pass_energy_or_retard_ratio_or_mass_res</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.differential_width"><code class="docutils literal notranslate"><span class="pre">VamasBlock.differential_width</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.magnification_analyzer_transfer_lens"><code class="docutils literal notranslate"><span class="pre">VamasBlock.magnification_analyzer_transfer_lens</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.analyzer_work_function_or_acceptance_energy"><code class="docutils literal notranslate"><span class="pre">VamasBlock.analyzer_work_function_or_acceptance_energy</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.target_bias"><code class="docutils literal notranslate"><span class="pre">VamasBlock.target_bias</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.analysis_width_x"><code class="docutils literal notranslate"><span class="pre">VamasBlock.analysis_width_x</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.analysis_width_y"><code class="docutils literal notranslate"><span class="pre">VamasBlock.analysis_width_y</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.analyzer_axis_take_off_polar_angle"><code class="docutils literal notranslate"><span class="pre">VamasBlock.analyzer_axis_take_off_polar_angle</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.analyzer_axis_take_off_azimuth"><code class="docutils literal notranslate"><span class="pre">VamasBlock.analyzer_axis_take_off_azimuth</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.species_label"><code class="docutils literal notranslate"><span class="pre">VamasBlock.species_label</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.transition_or_charge_state_label"><code class="docutils literal notranslate"><span class="pre">VamasBlock.transition_or_charge_state_label</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.charge_detected_particle"><code class="docutils literal notranslate"><span class="pre">VamasBlock.charge_detected_particle</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.x_label"><code class="docutils literal notranslate"><span class="pre">VamasBlock.x_label</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.x_units"><code class="docutils literal notranslate"><span class="pre">VamasBlock.x_units</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.x_start"><code class="docutils literal notranslate"><span class="pre">VamasBlock.x_start</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.x_step"><code class="docutils literal notranslate"><span class="pre">VamasBlock.x_step</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.num_corresponding_variables"><code class="docutils literal notranslate"><span class="pre">VamasBlock.num_corresponding_variables</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.corresponding_variables"><code class="docutils literal notranslate"><span class="pre">VamasBlock.corresponding_variables</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.signal_mode"><code class="docutils literal notranslate"><span class="pre">VamasBlock.signal_mode</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.signal_collection_time"><code class="docutils literal notranslate"><span class="pre">VamasBlock.signal_collection_time</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.num_scans_to_compile_block"><code class="docutils literal notranslate"><span class="pre">VamasBlock.num_scans_to_compile_block</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.signal_time_correction"><code class="docutils literal notranslate"><span class="pre">VamasBlock.signal_time_correction</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.sputtering_source"><code class="docutils literal notranslate"><span class="pre">VamasBlock.sputtering_source</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.sample_normal_polar_angle_tilt"><code class="docutils literal notranslate"><span class="pre">VamasBlock.sample_normal_polar_angle_tilt</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.sample_normal_tilt_azimuth"><code class="docutils literal notranslate"><span class="pre">VamasBlock.sample_normal_tilt_azimuth</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.sample_rotation_angle"><code class="docutils literal notranslate"><span class="pre">VamasBlock.sample_rotation_angle</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.num_additional_numerical_params"><code class="docutils literal notranslate"><span class="pre">VamasBlock.num_additional_numerical_params</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.additional_numerical_params"><code class="docutils literal notranslate"><span class="pre">VamasBlock.additional_numerical_params</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.VamasBlock.num_y_values"><code class="docutils literal notranslate"><span class="pre">VamasBlock.num_y_values</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vamas_block.html#correspondingvariable">CorrespondingVariable</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.CorrespondingVariable"><code class="docutils literal notranslate"><span class="pre">CorrespondingVariable</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.CorrespondingVariable.label"><code class="docutils literal notranslate"><span class="pre">CorrespondingVariable.label</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.CorrespondingVariable.unit"><code class="docutils literal notranslate"><span class="pre">CorrespondingVariable.unit</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.CorrespondingVariable.y_values"><code class="docutils literal notranslate"><span class="pre">CorrespondingVariable.y_values</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.CorrespondingVariable.y_min"><code class="docutils literal notranslate"><span class="pre">CorrespondingVariable.y_min</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.CorrespondingVariable.y_max"><code class="docutils literal notranslate"><span class="pre">CorrespondingVariable.y_max</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vamas_block.html#linescancoordinates">LinescanCoordinates</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.LinescanCoordinates"><code class="docutils literal notranslate"><span class="pre">LinescanCoordinates</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.LinescanCoordinates.first_linescan_start_x"><code class="docutils literal notranslate"><span class="pre">LinescanCoordinates.first_linescan_start_x</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.LinescanCoordinates.first_linescan_start_y"><code class="docutils literal notranslate"><span class="pre">LinescanCoordinates.first_linescan_start_y</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.LinescanCoordinates.first_linescan_finish_x"><code class="docutils literal notranslate"><span class="pre">LinescanCoordinates.first_linescan_finish_x</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.LinescanCoordinates.first_linescan_finish_y"><code class="docutils literal notranslate"><span class="pre">LinescanCoordinates.first_linescan_finish_y</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.LinescanCoordinates.last_linescan_finish_x"><code class="docutils literal notranslate"><span class="pre">LinescanCoordinates.last_linescan_finish_x</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.LinescanCoordinates.last_linescan_finish_y"><code class="docutils literal notranslate"><span class="pre">LinescanCoordinates.last_linescan_finish_y</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vamas_block.html#sputteringsource">SputteringSource</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.SputteringSource"><code class="docutils literal notranslate"><span class="pre">SputteringSource</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.SputteringSource.energy"><code class="docutils literal notranslate"><span class="pre">SputteringSource.energy</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.SputteringSource.beam_current"><code class="docutils literal notranslate"><span class="pre">SputteringSource.beam_current</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.SputteringSource.width_x"><code class="docutils literal notranslate"><span class="pre">SputteringSource.width_x</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.SputteringSource.width_y"><code class="docutils literal notranslate"><span class="pre">SputteringSource.width_y</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.SputteringSource.polar_incidence_angle"><code class="docutils literal notranslate"><span class="pre">SputteringSource.polar_incidence_angle</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.SputteringSource.azimuth"><code class="docutils literal notranslate"><span class="pre">SputteringSource.azimuth</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.SputteringSource.mode"><code class="docutils literal notranslate"><span class="pre">SputteringSource.mode</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vamas_block.html#additionalnumericalparam">AdditionalNumericalParam</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.AdditionalNumericalParam"><code class="docutils literal notranslate"><span class="pre">AdditionalNumericalParam</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.AdditionalNumericalParam.label"><code class="docutils literal notranslate"><span class="pre">AdditionalNumericalParam.label</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.AdditionalNumericalParam.unit"><code class="docutils literal notranslate"><span class="pre">AdditionalNumericalParam.unit</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vamas_block.html#vamas.vamas_block.AdditionalNumericalParam.value"><code class="docutils literal notranslate"><span class="pre">AdditionalNumericalParam.value</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
