@@ -159,8 +159,8 @@ def _read_vamas(f: TextIO) -> tuple[VamasHeader, List[VamasBlock]]:
         b["technique"] = next(f).strip() if include[8] else fb["technique"]
 
         if h["experiment_mode"] in ["MAP", "MAPD"]:
-            b["x_coord"] = int(next(f)) if include[9] else fb["x_coord"]
-            b["y_coord"] = int(next(f)) if include[9] else fb["y_coord"]
+            b["x_coord"] = int(float(next(f))) if include[9] else fb["x_coord"]
+            b["y_coord"] = int(float(next(f))) if include[9] else fb["y_coord"]
 
         if include[10]:
             b["values_exp_var"] = []
