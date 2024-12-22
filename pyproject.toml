@@ -4,7 +4,7 @@ version = "0.1.1"
 description = "Python package to read vamas (.vms) files"
 authors = [{ name = "Matthias Krinninger", email = "matkrin@protonmail.com" }]
 license = { text = "BSD-3-Clause" }
-requires-python = "<4.0,>=3.7"
+requires-python = ">=3.8"
 dependencies = []
 readme = "README.rst"
 classifiers = [
