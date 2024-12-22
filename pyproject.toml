@@ -1,6 +1,6 @@
 [project]
 name = "vamas"
-version = "0.1.1"
+version = "0.2.0"
 description = "Python package to read vamas (.vms) files"
 authors = [{ name = "Matthias Krinninger", email = "matkrin@protonmail.com" }]
 license = { text = "BSD-3-Clause" }
@@ -40,3 +40,7 @@ format = { docstring-code-format = true }
 
 [tool.mypy]
 show_error_codes = true
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
