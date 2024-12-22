@@ -1,6 +1,9 @@
 default:
 	just --list
 
+lint:
+    uv run ruff check vamas
+
 test:
 	uv run pytest
 
