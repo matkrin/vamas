@@ -50,9 +50,7 @@ def test_aes_staib_blocks(aes_staib: Vamas):
 def test_aes_staib_corr_vars(aes_staib: Vamas):
     corr_vars = aes_staib.blocks[0].corresponding_variables
     if corr_vars is not None:
-        assert (
-            len(corr_vars) == aes_staib.blocks[0].num_corresponding_variables
-        )
+        assert len(corr_vars) == aes_staib.blocks[0].num_corresponding_variables
         assert corr_vars[0].label == "Intensity"
         assert corr_vars[0].unit == "d"
         assert corr_vars[0].y_min == -3423633
@@ -79,3 +77,15 @@ def test_aes_staib_additional_numberical_params(aes_staib: Vamas):
 
         for param in add_num_params:
             assert param.unit == "n"
+
+
+def test_aes_staib_as_bytes():
+    with open(TESTFILE_AES_STAIB, "rb") as f:
+        vms_bytes = f.read()
+
+    assert isinstance(vms_bytes, bytes)
+    vms = Vamas(vms_bytes)
+    test_aes_staib_header(vms)
+    test_aes_staib_blocks(vms)
+    test_aes_staib_corr_vars(vms)
+    test_aes_staib_additional_numberical_params(vms)

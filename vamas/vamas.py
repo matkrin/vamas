@@ -1,3 +1,4 @@
+import io
 from typing import Union, List, Dict, Tuple, TextIO
 from pathlib import Path
 
@@ -30,12 +31,24 @@ class Vamas:
         blocks (List[VamasBlock]):
     """
 
-    def __init__(self, file: Union[str, Path]) -> None:
-        if not str(file).endswith(".vms"):
-            raise FileExtensionError
+    def __init__(self, file: Union[str, Path, bytes]) -> None:
+        if isinstance(file, (str, Path)):
+            if not str(file).endswith(".vms"):
+                raise FileExtensionError
 
-        with open(file) as f:
-            self.header, self.blocks = _read_vamas(f)
+            with open(file) as f:
+                self.header, self.blocks = _read_vamas(f)
+
+        elif isinstance(file, bytes):
+            byte_stream = io.BytesIO(file)
+            # Wrap the BytesIO stream in a TextIOWrapper to treat it as a text file
+            text_stream = io.TextIOWrapper(byte_stream, encoding="utf-8")
+            self.header, self.blocks = _read_vamas(text_stream)
+
+        else:
+            raise TypeError(
+                "Argument file must be of type `str`,`Path` or `bytes`"
+            )
 
 
 def _read_vamas(f: TextIO) -> Tuple[VamasHeader, List[VamasBlock]]:
@@ -333,15 +346,11 @@ def _read_vamas(f: TextIO) -> Tuple[VamasHeader, List[VamasBlock]]:
                 )
 
         else:
-            b["num_corresponding_variables"] = fb[
-                "num_corresponding_variables"
-            ]
+            b["num_corresponding_variables"] = fb["num_corresponding_variables"]
             assert fb["corresponding_variables"] is not None
             b["corresponding_variables"] = fb["corresponding_variables"].copy()
 
-        b["signal_mode"] = (
-            next(f).strip() if include[32] else fb["signal_mode"]
-        )
+        b["signal_mode"] = next(f).strip() if include[32] else fb["signal_mode"]
 
         b["signal_collection_time"] = (
             float(next(f)) if include[33] else fb["signal_collection_time"]
@@ -407,9 +416,7 @@ def _read_vamas(f: TextIO) -> Tuple[VamasHeader, List[VamasBlock]]:
             b["num_additional_numerical_params"] = fb[
                 "num_additional_numerical_params"
             ]
-            b["additional_numerical_params"] = fb[
-                "additional_numerical_params"
-            ]
+            b["additional_numerical_params"] = fb["additional_numerical_params"]
 
         b["num_y_values"] = int(next(f))
         for corres_var in b["corresponding_variables"]:
