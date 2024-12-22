@@ -1,11 +1,11 @@
-[tool.poetry]
+[project]
 name = "vamas"
 version = "0.1.1"
 description = "Python package to read vamas (.vms) files"
-authors = ["Matthias Krinninger <matkrin@protonmail.com>"]
-license = "BSD-3-Clause"
-homepage = "https://github.com/matkrin/vamas"
-documentation = "https://matkrin.github.io/vamas"
+authors = [{ name = "Matthias Krinninger", email = "matkrin@protonmail.com" }]
+license = { text = "BSD-3-Clause" }
+requires-python = "<4.0,>=3.7"
+dependencies = []
 readme = "README.rst"
 classifiers = [
     "Development Status :: 3 - Alpha",
@@ -16,32 +16,27 @@ classifiers = [
     "Intended Audience :: Science/Research",
     "Topic :: Scientific/Engineering",
 ]
-include = ["vamas/py.typed"]
 
-[tool.poetry.dependencies]
-python = "^3.7"
+[project.urls]
+homepage = "https://github.com/matkrin/vamas"
+documentation = "https://matkrin.github.io/vamas"
 
-[tool.poetry.dev-dependencies]
-pytest = "^7.1.2"
-mypy = "^0.960"
-black = "^22.3.0"
-Sphinx = "^5.0.2"
-sphinx-rtd-theme = "^1.0.0"
-
-[tool.poetry.extras]
-docs = ["Sphinx", "sphinx-rtd-theme"]
-test = ["pytest"]
-
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+[tool.uv]
+managed = true
+dev-dependencies = [
+    "pytest<8.0.0,>=7.1.2",
+    "mypy<1.0,>=0.960",
+    "Sphinx<6.0.0,>=5.0.2",
+    "sphinx-rtd-theme<2.0.0,>=1.0.0",
+    "ruff>=0.8.4",
+]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 
-[tool.black]
-line-length = 79
-preview = true
+[tool.ruff]
+line-length = 80
+format = { docstring-code-format = true }
 
 [tool.mypy]
 show_error_codes = true
